@@ -6,12 +6,11 @@
 /*   By: bparker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 11:17:51 by bparker           #+#    #+#             */
-/*   Updated: 2018/12/24 13:30:45 by bparker          ###   ########.fr       */
+/*   Updated: 2018/12/29 19:59:43 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <math.h>
+#include "fdf.h"
 
 void	drawlineeasy(double x0, double x1, double y0, double y1, void *mlx_ptr, void *win_ptr, int color)
 {
@@ -65,13 +64,16 @@ int		main(int ac, char **av)
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
+	t_vector	*map;
 //	t_coords	xy;
 
 	if (ac == 2)
 	{
+		map = ft_get_map(av[1]);
+		ft_rotate(map);
 		mlx_ptr = mlx_init();
 		win_ptr = mlx_new_window(mlx_ptr, 1024, 1024, "SuperTittle");
-		drawlineeasy(100, 150, 100, 200, mlx_ptr, win_ptr, 0xFF0000);
+		/*drawlineeasy(100, 150, 100, 200, mlx_ptr, win_ptr, 0xFF0000);
 		drawlineeasy(100, 150, 100, 0, mlx_ptr, win_ptr, 0x00FF00);
 		drawlineeasy(200, 150, 100, 200, mlx_ptr, win_ptr, 0xFFFFFF);
 		drawlineeasy(200, 150, 100, 0, mlx_ptr, win_ptr, 0x0000FF);
@@ -80,7 +82,7 @@ int		main(int ac, char **av)
 		drawlineeasy(650, 500, 200, 100, mlx_ptr, win_ptr, 0x0000FF);
 		drawlineeasy(650, 500, 100, 200, mlx_ptr, win_ptr, 0xFFFFFF);
 		drawlineeasy(850, 1000, 100, 100, mlx_ptr, win_ptr, 0xFFFFFF);
-		drawlineeasy(950, 950, 100, 200, mlx_ptr, win_ptr, 0xFFFFFF);
+		drawlineeasy(950, 950, 100, 200, mlx_ptr, win_ptr, 0xFFFFFF);*/
 		mlx_key_hook(win_ptr, hook_keydown, (void *)0);
 		mlx_loop(mlx_ptr);
 	}
