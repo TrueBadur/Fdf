@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 14:08:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/12/29 20:00:03 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/12/29 22:18:30 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,6 @@ typedef struct	s_mlx
 	void	*mlx_ptr;
 	void	*win_ptr;
 }				t_mlx;
+
+t_map	*ft_get_map(char *fname);
 #endif
