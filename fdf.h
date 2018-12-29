@@ -6,13 +6,13 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 14:08:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/12/24 14:16:15 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/12/29 20:00:03 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-# include "libft.h"
+# include "libft/libft.h"
 # include <mlx.h>
 # include <math.h>
 
