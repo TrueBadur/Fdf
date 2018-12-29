@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 14:08:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/12/29 20:00:03 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/12/29 22:09:31 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,14 @@
 # include <mlx.h>
 # include <math.h>
 
-typedef struct	s_gvector
+
+typedef struct	s_map
 {
-	int		x;
-	int		y;
-}				t_gvec;
+	int			w;
+	int			h;
+	int			d;
+	t_vector	fdf;
+}				t_map;
 
 typedef struct	s_mlx
 {

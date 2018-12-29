@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:55:20 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/12/15 14:26:30 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/12/29 22:08:42 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,28 @@ typedef struct		s_btavl
 	struct s_btavl	*right;
 	unsigned char	h;
 }					t_btavl;
+
 typedef struct		s_list
 {
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct	s_gvector2
+{
+	int		x;
+	int		y;
+}				t_gvec2;
+
+typedef struct	s_gvector4
+{
+	int x;
+	int y;
+	int z;
+	int color;
+}				t_gvec4;
+
 typedef struct		s_vector
 {
 	void			*data;
