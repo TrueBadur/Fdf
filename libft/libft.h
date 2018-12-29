@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:55:20 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/12/29 22:08:42 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/12/29 23:48:47 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,19 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-typedef struct	s_gvector2
+typedef struct	s_vector2
 {
 	int		x;
 	int		y;
-}				t_gvec2;
+}				t_vec2;
 
-typedef struct	s_gvector4
+typedef struct	s_vector4
 {
-	int x;
-	int y;
-	int z;
-	int color;
-}				t_gvec4;
+	double	x;
+	double	y;
+	double	z;
+	int		color;
+}				t_vec4;
 
 typedef struct		s_vector
 {
@@ -123,8 +123,9 @@ int					ft_isspace(int c);
 void				ft_foreachint(int **arr, size_t len, void (*f)(int *n));
 int					*ft_foreachintm(const int *arr, size_t len, int (*f)(int));
 t_vector			*ft_vecinit(size_t cap);
-void				ft_vecdel(void **vect);
-t_vector			*ft_vecpush(t_vector *vec);
+void				ft_vecdel(t_vector **vect, void (*f)(void *));
+t_vector			*ft_vecpush(t_vector *vec, void *data, size_t s);
+t_vector			*ft_vecgrow(t_vector *vec, size_t s);
 t_vector			*ft_vecshrink(t_vector *vec, unsigned int offset);
 t_btavl				*ft_avlnew(void *data, int key, size_t size);
 unsigned char		ft_avlh(t_btavl *tr);
