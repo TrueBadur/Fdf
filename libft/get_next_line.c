@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 12:51:25 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/12/15 14:24:35 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/12/30 03:57:12 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int		ft_readtobuf(t_vector *vec, char **line, int fd)
 			if (!(vec = ft_vecshrink(vec, 0)))
 				return (-1);
 		if (vec->cap - vec->len < BUFF_SIZE)
-			if (!(vec = ft_vecpush(vec)))
+			if (!(vec = ft_vecgrow(vec, vec->cap * 2)))
 				return (-1);
 		rr = read(fd, (vec->data + vec->len), BUFF_SIZE);
 		if (rr < 0 || rr == 0)
