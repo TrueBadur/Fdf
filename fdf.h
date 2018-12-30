@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 14:08:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/12/30 01:32:33 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/12/30 04:21:43 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 # include <math.h>
 # include <fcntl.h>
 # define CONTENT_ERROR 5
+# define CONTENT_ERROR_MSG "error: wrong data in file\n"
 # define FILE_ERROR 3
+# define FILE_ERROR_MSG "error: can't open file\n"
 
 
 typedef struct	s_map
