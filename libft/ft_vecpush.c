@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 17:58:28 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/12/29 23:17:47 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/12/30 04:42:56 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 t_vector	*ft_vecpush(t_vector *vec, void *data, size_t s)
 {
-	void *tmp;
-	int		it;
+	unsigned int	it;
 
 	if (!vec)
 		return (t_vector*)(NULL);
 	if (!data || !s)
 		return (vec);
 	it = vec->cap;
-	while (s > vec->cap - vec->len)
+	while (s > it - vec->len)
 		it *= 2;
 	if (it > vec->cap)
 		vec = ft_vecgrow(vec, it);
