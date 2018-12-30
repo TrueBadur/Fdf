@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:55:20 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/12/29 23:48:47 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/12/30 03:58:10 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int					ft_isspace(int c);
 void				ft_foreachint(int **arr, size_t len, void (*f)(int *n));
 int					*ft_foreachintm(const int *arr, size_t len, int (*f)(int));
 t_vector			*ft_vecinit(size_t cap);
-void				ft_vecdel(t_vector **vect, void (*f)(void *));
+void				ft_vecdel(void **vect);
 t_vector			*ft_vecpush(t_vector *vec, void *data, size_t s);
 t_vector			*ft_vecgrow(t_vector *vec, size_t s);
 t_vector			*ft_vecshrink(t_vector *vec, unsigned int offset);
