@@ -6,11 +6,12 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 20:09:16 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/12/30 05:37:26 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/04 17:56:08 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdio.h>
 
 static int	ft_get_color(char *pt)
 {
@@ -45,7 +46,7 @@ static int ft_fill_row(t_map *fdf, char *line, int row)
 	{
 		point.x = i;
 		point.y = row;
-		if (tmp[i][0] < '0' || tmp[i][0] > '9')
+		if ((tmp[i][0] < '0' || tmp[i][0] > '9') && tmp[i][0] != '-')
 			exit(ft_error(CONTENT_ERROR));
 		point.z = ft_atoi(tmp[i]);
 		if (point.z > fdf->d)
