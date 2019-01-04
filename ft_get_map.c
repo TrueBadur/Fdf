@@ -6,12 +6,11 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 20:09:16 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/04 17:56:08 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/04 18:05:20 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
 
 static int	ft_get_color(char *pt)
 {
@@ -19,10 +18,10 @@ static int	ft_get_color(char *pt)
 
 	if (!pt)
 		return (0);
-	if (++*pt != '0' || ++*pt != 'x')
+	if (*(++pt) != '0' || *(++pt) != 'x')
 		exit(ft_error(CONTENT_ERROR));
 	ret = 0;
-	while (++*pt && ((*pt >= '0' && *pt <= '9') || (*pt >= 'A' && *pt <= 'F')))
+	while (*(++pt) && ((*pt >= '0' && *pt <= '9') || (*pt >= 'A' && *pt <= 'F')))
 	{
 		if (*pt >= '0' && *pt <= '9')
 			ret = ret * 16 + *pt - '0';
