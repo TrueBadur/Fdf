@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 14:08:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/12/30 04:21:43 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/05 13:24:53 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,16 @@
 # include <mlx.h>
 # include <math.h>
 # include <fcntl.h>
-# define CONTENT_ERROR 5
-# define CONTENT_ERROR_MSG "error: wrong data in file\n"
+# define CONT_ERR 5
+# define CONT_ERR_MSG "error: wrong data in file\n"
+# define CONT_ERR_CS 51
+# define CONT_ERR_CS_MSG "wrong start of color sequence\n"
+# define CONT_ERR_CE 52
+# define CONT_ERR_CE_MSG "wrong end of color sequence\n"
+# define CONT_ERR_NE 53
+# define CONT_ERR_NE_MSG "wrong number format\n"
+# define CONT_ERR_NO 54
+# define CONT_ERR_NO_MSG "wrong number of objects in line\n"
 # define FILE_ERROR 3
 # define FILE_ERROR_MSG "error: can't open file\n"
 
