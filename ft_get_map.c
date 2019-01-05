@@ -6,30 +6,36 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 20:09:16 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/04 18:05:20 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/05 13:32:08 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "fdf.h"
 
 static int	ft_get_color(char *pt)
 {
 	int ret;
+	char t;
 
 	if (!pt)
 		return (0);
 	if (*(++pt) != '0' || *(++pt) != 'x')
-		exit(ft_error(CONTENT_ERROR));
+		exit(ft_error(CONT_ERR_CS));
 	ret = 0;
-	while (*(++pt) && ((*pt >= '0' && *pt <= '9') || (*pt >= 'A' && *pt <= 'F')))
+	while ((t = ft_tolower(*(++pt))) && ((t >= '0' && t <= '9') ||
+				(t >= 'a' && t <= 'f')))
 	{
-		if (*pt >= '0' && *pt <= '9')
-			ret = ret * 16 + *pt - '0';
+		if (t >= '0' && t <= '9')
+			ret = ret * 16 + t - '0';
 		else
-			ret = ret * 16 + *pt - 'A' + 10;
+			ret = ret * 16 + t - 'a' + 10;
 	}
 	if (*pt)
-		exit(ft_error(CONTENT_ERROR));
+	{
+		printf("%s\n", pt);
+		exit(ft_error(CONT_ERR_CE));
+	}
 	return (ret);
 }
 
@@ -46,7 +52,7 @@ static int ft_fill_row(t_map *fdf, char *line, int row)
 		point.x = i;
 		point.y = row;
 		if ((tmp[i][0] < '0' || tmp[i][0] > '9') && tmp[i][0] != '-')
-			exit(ft_error(CONTENT_ERROR));
+			exit(ft_error(CONT_ERR_NE));
 		point.z = ft_atoi(tmp[i]);
 		if (point.z > fdf->d)
 			fdf->d = point.z;
@@ -79,7 +85,7 @@ t_map *ft_get_map(char *fname)
 		if (fdf->w == 0) 
 			fdf->w = ft_fill_row(fdf, line, row); 
 		else if (fdf->w != ft_fill_row(fdf, line, row))
-			exit(ft_error(CONTENT_ERROR));
+			exit(ft_error(CONT_ERR_NO));
 		row++;
 	}
 	fdf->h = row;
