@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 14:08:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/05 13:24:53 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/05 15:29:07 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,6 @@ typedef struct	s_mlx
 
 t_map	*ft_get_map(char *fname);
 int		ft_error(int er);
+void	ft_mapiter(t_map *mp, void (*f)(t_vec4 *, void *), void *data);
+t_map	*ft_mapiter_c(t_map *mp, void (*f)(t_vec4 *, void *), void *data);
 #endif
