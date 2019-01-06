@@ -6,13 +6,13 @@
 /*   By: bparker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 11:17:51 by bparker           #+#    #+#             */
-/*   Updated: 2019/01/06 10:05:01 by bparker          ###   ########.fr       */
+/*   Updated: 2019/01/06 10:19:07 by bparker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "fdf.h"
-
+/*
 void	drawlineeasy(double x0, double x1, double y0, double y1, void *mlx_ptr, void *win_ptr, int color)
 {
 	double	dx;
@@ -56,7 +56,7 @@ int		hook_keydown(int key, void *param)
 		exit(1);
 	return (0);
 }
-
+*/
 int		main(int ac, char **av)
 {
 //	void	*mlx_ptr;
@@ -74,7 +74,7 @@ int		main(int ac, char **av)
 		{
 			printf("point %d (x = %f, y = %f, z = %f, col = %X)\n", i, (po[i]).x, (po[i]).y, (po[i]).z, (po[i]).color);
 		}
-		img_draw(map, map->w * 32, map->h * 32, av[1]);
+		img_draw(*map, map->w * 32, map->h * 32, av[1]);
 	//	ft_rotate(map);
 //		mlx_ptr = mlx_init();
 //		win_ptr = mlx_new_window(mlx_ptr, 1024, 1024, "SuperTittle");
