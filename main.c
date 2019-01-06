@@ -6,7 +6,7 @@
 /*   By: bparker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 11:17:51 by bparker           #+#    #+#             */
-/*   Updated: 2018/12/30 05:39:50 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/06 10:05:01 by bparker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int		main(int ac, char **av)
 		{
 			printf("point %d (x = %f, y = %f, z = %f, col = %X)\n", i, (po[i]).x, (po[i]).y, (po[i]).z, (po[i]).color);
 		}
+		img_draw(map, map->w * 32, map->h * 32, av[1]);
 	//	ft_rotate(map);
 //		mlx_ptr = mlx_init();
 //		win_ptr = mlx_new_window(mlx_ptr, 1024, 1024, "SuperTittle");

@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 14:08:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/05 15:29:07 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/06 09:59:15 by bparker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,18 @@ typedef struct	s_mlx
 	void	*win_ptr;
 }				t_mlx;
 
+typedef struct  s_img
+{
+	void    *img_ptr;
+	char    *img_data;
+	int     bpp;
+	int     size_line;
+	int     endian;
+}               t_img;
+
 t_map	*ft_get_map(char *fname);
 int		ft_error(int er);
 void	ft_mapiter(t_map *mp, void (*f)(t_vec4 *, void *), void *data);
 t_map	*ft_mapiter_c(t_map *mp, void (*f)(t_vec4 *, void *), void *data);
+void    img_drawpixel(char *img_data, void *mlx_ptr, int x, int y, int col, int line_size);
 #endif

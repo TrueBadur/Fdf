@@ -6,7 +6,7 @@
 /*   By: bparker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 00:32:21 by bparker           #+#    #+#             */
-/*   Updated: 2019/01/04 04:02:54 by bparker          ###   ########.fr       */
+/*   Updated: 2019/01/06 10:01:31 by bparker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,36 @@ int		hook_keydown(int key, void *param)
 		exit(1);
 	return (0);
 }
+/*
+int	get_dcol(int col0, int col1, int iter)
+{
+	int	r;
+	int	g;
+	int	b;
 
+	r = ;
+	g = ;
+	b = ;
+	return ()
+}
+*/
 void	img_drawline(t_vec4 dot0, t_vec4 dot1, t_img cimg, t_mlx mlx)
 {
-	img_drawpixel(cimg.img_data, mlx.mlx_ptr, dot0.x, dot0.y, dot0.color, cimg.size_line);
+	double dx;
+	double dy;
+	double dc;
+
+	dx = fabs(dot1.y - dot0.y) > fabs(dot1.x - dot0.x) ? fabs(dot1.x - dot0.x) / fabs(dot1.y - dot0.y): 1;
+	dy = fabs(dot1.y - dot0.y) < fabs(dot1.x - dot0.x) ? fabs(dot1.y - dot0.y) / fabs(dot1.x - dot0.x): 1;
+//	dc = get_dcol(dot0.color, dot1.color, fabs(dot1.y - dot0.y) > fabs(dot1.x - dot0.x) ? fabs(dot1.y - dot0.y) : fabs(dot1.x - dot0.x));
+	while(dot0.x != dot1.x)
+	{
+		dot0.x += dx;
+		dot1.y += dy;
+//		dot1.color;
+		img_drawpixel(cimg.img_data, mlx.mlx_ptr, dot0.x, dot0.y, dot0.color, cimg.size_line);
+	}
+	img_drawpixel(cimg.img_data, mlx.mlx_ptr, dot1.x, dot1.y, dot1.color, cimg.size_line);
 }
 
 t_img	img_drawmap(t_map map, int size_x, int size_y, t_mlx mlx) //похоже на костыль? если да - можно переписать :)
