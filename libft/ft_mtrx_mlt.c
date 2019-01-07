@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 16:36:33 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/07 19:05:39 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/07 20:25:20 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_mtrx_d	*ft_mtrx_mlt_d(t_mtrx_d *m1, t_mtrx_d *m2)
 		while (j--)
 		{
 			(ret->mtrx)[i] += (m1->mtrx)[(i / m1->h - 1) * m1->w + j] *
-							(m2->mtrx)[m2->w * j + i % m2->w]; 
+							(m2->mtrx)[m2->w * j + i % m2->w];
 		}
 	}
 	return (ret);

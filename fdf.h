@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 14:08:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/07 19:55:48 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/07 20:22:37 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 # define FILE_ERROR 3
 # define FILE_ERROR_MSG "error: can't open file\n"
 
-
 typedef struct	s_map
 {
 	int			w;
@@ -40,27 +39,29 @@ typedef struct	s_map
 
 typedef struct	s_mlx
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
+	void		*mlx_ptr;
+	void		*win_ptr;
 }				t_mlx;
 
-typedef struct  s_img
+typedef struct	s_img
 {
-	void    *img_ptr;
-	char    *img_data;
-	int     bpp;
-	int     size_line;
-	int     endian;
-}               t_img;
+	void		*img_ptr;
+	char		*img_data;
+	int			bpp;
+	int			size_line;
+	int			endian;
+}				t_img;
 
-t_map	*ft_get_map(char *fname);
-int		ft_error(int er);
-void	ft_mapiter(t_map *mp, void (*f)(t_vec4 *, void *), void *data);
-t_map	*ft_mapiter_c(t_map *mp, void (*f)(t_vec4 *, void *), void *data);
-void    img_drawpixel(char *img_data, void *mlx_ptr, int x, int y, int col, int line_size);
-void    img_draw(t_map map, int size_x, int size_y, char *title);
-t_map	*ft_rotate_map(t_map *mp, int xrot, int yrot, int zrot);
-void	ft_point_move(t_vec4 *v, void *data);
-void	ft_point_scale(t_vec4 *v, void *data);
-void	ft_point_rot(t_vec4 *v, void *data);
+t_map			*ft_get_map(char *fname);
+int				ft_error(int er);
+void			ft_mapiter(t_map *mp, void (*f)(t_vec4 *, void *), void *data);
+t_map			*ft_mapiter_c(t_map *mp, void (*f)(t_vec4 *, void *),
+								void *data);
+void			img_drawpixel(char *img_data, void *mlx_ptr, int x, int y,
+								int col, int line_size);
+void			img_draw(t_map map, int size_x, int size_y, char *title);
+t_map			*ft_rotate_map(t_map *mp, int xrot, int yrot, int zrot);
+void			ft_point_move(t_vec4 *v, void *data);
+void			ft_point_scale(t_vec4 *v, void *data);
+void			ft_point_rot(t_vec4 *v, void *data);
 #endif
