@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 20:09:16 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/05 15:28:58 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/07 19:51:49 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,15 @@ static int ft_fill_row(t_map *fdf, char *line, int row)
 	return (i);
 }
 
-void ft_move_flat(t_vec4 *vec4, void *data)
-{
-	vec4->x += ((t_vec2*)data)->x;
-	vec4->y += ((t_vec2*)data)->y;
-}
 
 void ft_center_map(t_map *fdf)
 {
-	t_vec2 v;
+	t_vec3 v;
 
 	v.x = -(fdf->w / 2);
 	v.y = -(fdf->h / 2);
-	ft_mapiter(fdf, &ft_move_flat, &v);
+	v.z = 0;
+	ft_mapiter(fdf, &ft_map_move, &v);
 }
 
 t_map *ft_get_map(char *fname)
