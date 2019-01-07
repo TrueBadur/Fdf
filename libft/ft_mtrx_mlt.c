@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 16:36:33 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/07 18:18:31 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/07 19:05:39 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,14 @@ t_mtrx_d	*ft_mtrx_mlt_d(t_mtrx_d *m1, t_mtrx_d *m2)
 
 	if (m1->w != m2->h)
 		return (NULL);
+	if (!(ret = malloc(sizeof(t_mtrx_d))))
+		return (NULL);
 	i = m1->h * m2->w;
 	if (!(ret->mtrx = malloc(sizeof(double) * i)))
+	{
+		free(ret);
 		return (NULL);
+	}
 	ft_bzero(ret->mtrx, sizeof(double) * i);
 	while (i--)
 	{
