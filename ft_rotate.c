@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 15:29:50 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/07 18:52:14 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/07 19:16:53 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_point_rot(t_vec4 *v, void *data)
 {
-	int *d;
+	double *d;
 
-	d = (int *)data;
+	d = (double *)data;
 	if (d[0])
 	{
 		v->y = v->y * cos(d[0]) - v->z * sin(d[0]);
@@ -36,10 +36,10 @@ void	ft_point_rot(t_vec4 *v, void *data)
 
 t_map	*ft_rotate_map(t_map *mp, int xr, int yr, int zr)
 {
-	int tmp[3];
+	double tmp[3];
 
-	tmp[0] = xr;
-	tmp[1] = yr;
-	tmp[2] = zr;
+	tmp[0] = xr * M_PI / 180;
+	tmp[1] = yr * M_PI / 180;
+	tmp[2] = zr * M_PI / 180;
 	return (ft_mapiter_c(mp, &ft_point_rot, &tmp));
 }
