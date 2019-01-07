@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 14:08:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/06 10:14:52 by bparker          ###   ########.fr       */
+/*   Updated: 2019/01/07 18:52:12 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ void	ft_mapiter(t_map *mp, void (*f)(t_vec4 *, void *), void *data);
 t_map	*ft_mapiter_c(t_map *mp, void (*f)(t_vec4 *, void *), void *data);
 void    img_drawpixel(char *img_data, void *mlx_ptr, int x, int y, int col, int line_size);
 void    img_draw(t_map map, int size_x, int size_y, char *title);
-
+t_map	*ft_rotate_map(t_map *mp, int xrot, int yrot, int zrot);
 #endif
