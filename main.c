@@ -6,7 +6,7 @@
 /*   By: bparker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 11:17:51 by bparker           #+#    #+#             */
-/*   Updated: 2019/01/07 12:54:58 by bparker          ###   ########.fr       */
+/*   Updated: 2019/01/08 18:27:36 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,40 +57,33 @@ int		hook_keydown(int key, void *param)
 	return (0);
 }
 */
+void	print_map(t_vec4 *v, void *data)
+{
+	printf("%s (x = %f, y = %f, z = %f, col = %X)\n",(char *)data, v->x, v->y, v->z, v->color);
+}
+
 int		main(int ac, char **av)
 {
-//	void	*mlx_ptr;
-//	void	*win_ptr;
+	t_mlx	mlx;
 	t_map	*map;
-//	t_coords	xy;
+	//	t_coords	xy;
 
 	if (ac == 2)
 	{
-		printf("HELLO!\n");
 		map = ft_get_map(av[1]);
-		printf("map = %p\n", map);
-		t_vec4 *po = (t_vec4*)(map->vec->data);
-		for (int i = map->w * map->h; i; i--)
-		{
-			printf("point %d (x = %f, y = %f, z = %f, col = %X)\n", i, (po[i]).x, (po[i]).y, (po[i]).z, (po[i]).color);
-		}
-		img_draw(*map, map->w * 32, map->h * 32, av[1]);
-	//	ft_scale(map);
-	//	ft_rotate(map);
-//		mlx_ptr = mlx_init();
-//		win_ptr = mlx_new_window(mlx_ptr, 1024, 1024, "SuperTittle");
-		/*drawlineeasy(100, 150, 100, 200, mlx_ptr, win_ptr, 0xFF0000);
-		drawlineeasy(100, 150, 100, 0, mlx_ptr, win_ptr, 0x00FF00);
-		drawlineeasy(200, 150, 100, 200, mlx_ptr, win_ptr, 0xFFFFFF);
-		drawlineeasy(200, 150, 100, 0, mlx_ptr, win_ptr, 0x0000FF);
-		drawlineeasy(300, 450, 100, 200, mlx_ptr, win_ptr, 0xFF0000);
-		drawlineeasy(300, 450, 200, 100, mlx_ptr, win_ptr, 0x00FF00);
-		drawlineeasy(650, 500, 200, 100, mlx_ptr, win_ptr, 0x0000FF);
-		drawlineeasy(650, 500, 100, 200, mlx_ptr, win_ptr, 0xFFFFFF);
-		drawlineeasy(850, 1000, 100, 100, mlx_ptr, win_ptr, 0xFFFFFF);
-		drawlineeasy(950, 950, 100, 200, mlx_ptr, win_ptr, 0xFFFFFF);*/
-//		mlx_key_hook(win_ptr, hook_keydown, (void *)0);
-//		mlx_loop(mlx_ptr);
+		//ft_mapiter(map, &print_map, NULL);
+		ft_mapiter(map, &ft_point_scale, (int[]){50, 50, 20});
+		map = ft_rotate_map(map, 30, 30, 30);
+		printf("___________________\n");
+		ft_mapiter(map, &ft_point_move, (int[]){300, 300, 0});
+		//ft_mapiter(map, &print_map, &"1");
+		img_draw(*map, 2048, 2048, av[1]);
+		//	ft_scale(map);
+		//	ft_rotate(map);
+		//		mlx_ptr = mlx_init();
+		//		win_ptr = mlx_new_window(mlx_ptr, 1024, 1024, "SuperTittle");
+	//		mlx_key_hook(win_ptr, hook_keydown, (void *)0);
+		//		mlx_loop(mlx_ptr);
 	}
 	return (0);
 }

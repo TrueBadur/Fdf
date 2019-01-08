@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 14:08:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/07 20:22:37 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/08 16:03:13 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,5 @@ t_map			*ft_rotate_map(t_map *mp, int xrot, int yrot, int zrot);
 void			ft_point_move(t_vec4 *v, void *data);
 void			ft_point_scale(t_vec4 *v, void *data);
 void			ft_point_rot(t_vec4 *v, void *data);
+void			print_map(t_vec4 *v, void *data);
 #endif
