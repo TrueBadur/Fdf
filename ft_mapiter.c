@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 14:28:57 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/07 20:17:12 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/08 17:01:23 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_mapiter(t_map *mp, void (*f)(t_vec4 *vec4, void *data), void *data)
 		return ;
 	i = mp->w * mp->h;
 	t = (t_vec4*)(mp->vec->data);
-	while (--i)
+	while (i--)
 		f(&t[i], data);
 }
 
