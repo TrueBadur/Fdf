@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:55:20 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/07 20:23:31 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/09 12:38:03 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ typedef struct		s_vector3
 
 typedef struct		s_vector4
 {
-	double	x;
-	double	y;
-	double	z;
-	int		color;
+	int	x;
+	int	y;
+	int	z;
+	int	color;
 }					t_vec4;
 
 typedef struct		s_vector
