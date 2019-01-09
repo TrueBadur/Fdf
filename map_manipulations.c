@@ -6,19 +6,19 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 15:29:50 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/09 14:04:13 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/09 15:44:01 by bparker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_map	*ft_rotate_map(t_map *mp, int xr, int yr, int zr)
+t_map	*ft_rotate_map(t_map *mp, t_vec3 v)
 {
 	double tmp[3];
 
-	tmp[0] = xr * M_PI / 180;
-	tmp[1] = yr * M_PI / 180;
-	tmp[2] = zr * M_PI / 180;
+	tmp[0] = v.x * M_PI / 180;
+	tmp[1] = v.y * M_PI / 180;
+	tmp[2] = v.z * M_PI / 180;
 	return (ft_mapiter_c(mp, &ft_point_rot, &tmp));
 }
 

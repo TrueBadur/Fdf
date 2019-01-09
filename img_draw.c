@@ -6,7 +6,7 @@
 /*   By: bparker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 00:32:21 by bparker           #+#    #+#             */
-/*   Updated: 2019/01/09 14:42:43 by bparker          ###   ########.fr       */
+/*   Updated: 2019/01/09 15:04:39 by bparker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ int		hook_keydown(int key, void *param)
 	if (key == 53)
 		exit(1);
 	return (0);
+}
+
+void print_map(t_vec4 *v, void * data)
+{
+	printf("(x = %d, y = %d, z = %d, color = %X)\n", v->x, v->y, v->z, v->color);
 }
 
 t_img	img_draw(t_map map, t_vec2 vec, t_mlx mlx)
@@ -32,6 +37,7 @@ t_img	img_draw(t_map map, t_vec2 vec, t_mlx mlx)
 	cimg.img_data = mlx_get_data_addr(cimg.img_ptr, &cimg.bpp,
 			&cimg.size_line, &cimg.endian);
 	dot = (t_vec4*)(map.vec->data);
+	ft_mapiter(&map, &print_map, NULL);
 	while (++i < map.h)
 	{
 		j = 0;
