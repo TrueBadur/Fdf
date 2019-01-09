@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 14:08:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/08 16:03:13 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/08 18:58:57 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <mlx.h>
 # include <math.h>
 # include <fcntl.h>
+# define MW_NAME "FDF by bparker and ehugh-be"
 # define CONT_ERR 5
 # define CONT_ERR_MSG "error: wrong data in file\n"
 # define CONT_ERR_CS 51
@@ -28,6 +29,9 @@
 # define CONT_ERR_NO_MSG "wrong number of objects in line\n"
 # define FILE_ERROR 3
 # define FILE_ERROR_MSG "error: can't open file\n"
+# define ARG_ERROR 3
+# define ARG_ERROR_MSG "error: insufficient number of arguments\n"
+# define USAGE_MSG "usage: ./fdf file_to_open [window_width window_height]\n"
 
 typedef struct	s_map
 {
