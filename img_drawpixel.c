@@ -6,18 +6,18 @@
 /*   By: bparker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 21:41:41 by bparker           #+#    #+#             */
-/*   Updated: 2019/01/07 15:18:36 by bparker          ###   ########.fr       */
+/*   Updated: 2019/01/09 14:15:52 by bparker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	img_drawpixel(char *img_data, void *mlx_ptr, int x, int y, int col, int line_size)
+void	img_drawpixel(char *img_data, void *mlx_ptr, t_vec4 dot, int line_size)
 {
 	unsigned int	col1;
 	unsigned int	*pix_ptr;
 
-	col1 = mlx_get_color_value(mlx_ptr, col);
-	pix_ptr = (unsigned int *)(img_data + x * 4 +	line_size * y);
+	col1 = mlx_get_color_value(mlx_ptr, dot.color);
+	pix_ptr = (unsigned int *)(img_data + dot.x * 4 + line_size * dot.y);
 	*pix_ptr = col1;
 }
