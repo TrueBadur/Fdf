@@ -6,7 +6,7 @@
 /*   By: bparker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 00:32:21 by bparker           #+#    #+#             */
-/*   Updated: 2019/01/09 14:32:55 by bparker          ###   ########.fr       */
+/*   Updated: 2019/01/09 14:42:43 by bparker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		hook_keydown(int key, void *param)
 	return (0);
 }
 
-t_img	img_drawmap(t_map map, int size_x, int size_y, t_mlx mlx)
+t_img	img_draw(t_map map, t_vec2 vec, t_mlx mlx)
 {
 	int		i;
 	int		j;
@@ -28,7 +28,7 @@ t_img	img_drawmap(t_map map, int size_x, int size_y, t_mlx mlx)
 	t_img	cimg;
 
 	i = -1;
-	cimg.img_ptr = mlx_new_image(mlx.mlx_ptr, size_x, size_y);
+	cimg.img_ptr = mlx_new_image(mlx.mlx_ptr, vec.x, vec.y);
 	cimg.img_data = mlx_get_data_addr(cimg.img_ptr, &cimg.bpp,
 			&cimg.size_line, &cimg.endian);
 	dot = (t_vec4*)(map.vec->data);
@@ -47,18 +47,4 @@ t_img	img_drawmap(t_map map, int size_x, int size_y, t_mlx mlx)
 		}
 	}
 	return (cimg);
-}
-
-void	img_draw(t_map map, int size_x, int size_y, char *title)
-{
-	t_mlx	mlx;
-	t_img	cimg;
-
-	mlx.mlx_ptr = mlx_init();
-	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, size_x, size_y, title);
-	cimg = img_drawmap(map, size_x, size_y, mlx);
-	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win_ptr, cimg.img_ptr, 0, 0);
-	mlx_key_hook(mlx.win_ptr, hook_keydown, (void *)0);
-	mlx_loop(mlx.mlx_ptr);
-	printf("END\n");
 }

@@ -6,7 +6,7 @@
 /*   By: bparker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 11:17:51 by bparker           #+#    #+#             */
-/*   Updated: 2019/01/09 14:28:11 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/09 14:46:30 by bparker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	img_to_win(t_map *mp, t_mlx mlx, t_vec2 res)
 {
 	t_img img;
 
-	img = img_draw(*mp, res);
+	img = img_draw(*mp, res, mlx);
+	printf("Hello!\n");
 	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win_ptr, img.img_ptr, 0, 0);
 	map_free(&mp);
 	mlx_destroy_image(mlx.mlx_ptr, img.img_ptr);
@@ -75,6 +76,6 @@ int		main(int ac, char **av)
 	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, res.x, res.y, "SuperTittle");
 	img_to_win(c_map, mlx, res);
 	mlx_key_hook(mlx.win_ptr, hook_keydwn, (int *[]){(int *)&mlx, (int *)&res});
-		//		mlx_loop(mlx_ptr);
+	mlx_loop(mlx.mlx_ptr);
 	return (0);
 }
