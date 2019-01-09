@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 14:08:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/09 11:41:32 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/09 14:28:56 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,5 @@ void			ft_point_move(t_vec4 *v, void *data);
 void			ft_point_scale(t_vec4 *v, void *data);
 void			ft_point_rot(t_vec4 *v, void *data);
 void			print_map(t_vec4 *v, void *data);
+void			ft_fit_map(t_map *mp, t_vec2 res);
 #endif
