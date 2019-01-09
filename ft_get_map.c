@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 20:09:16 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/09 11:43:29 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/09 11:51:25 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,6 @@ t_map		*ft_get_map(char *fname)
 	fdf->h_m = 0;
 	fdf->h = row;
 	fdf->h_m = 0;
-	//ft_center_map(fdf);
+	ft_center_map(fdf);
 	return (fdf);
 }
