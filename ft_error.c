@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/30 04:00:04 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/05 13:24:49 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/09 11:30:17 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,10 @@ int	ft_error(int er)
 	}
 	else if (er == FILE_ERROR)
 		ft_putstr_fd(FILE_ERROR_MSG, 2);
+	else if (er == ARG_ERROR)
+	{
+		ft_putstr_fd(ARG_ERROR_MSG, 2);
+		ft_putstr_fd(USAGE_MSG, 2);
+	}
 	return (er);
 }

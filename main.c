@@ -6,7 +6,7 @@
 /*   By: bparker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 11:17:51 by bparker           #+#    #+#             */
-/*   Updated: 2019/01/08 18:27:36 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/09 11:23:50 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,25 +65,34 @@ void	print_map(t_vec4 *v, void *data)
 int		main(int ac, char **av)
 {
 	t_mlx	mlx;
-	t_map	*map;
+	t_map	*b_map;
+	t_map	*c_map;
+	t_vec2	res;
+
 	//	t_coords	xy;
 
-	if (ac == 2)
+	if (ac == 1 || ac == 3 || ac > 4)
+		exit(ft_error(ARG_ERROR));
+	if (ac == 4)
 	{
-		map = ft_get_map(av[1]);
-		//ft_mapiter(map, &print_map, NULL);
-		ft_mapiter(map, &ft_point_scale, (int[]){50, 50, 20});
-		map = ft_rotate_map(map, 30, 30, 30);
-		printf("___________________\n");
-		ft_mapiter(map, &ft_point_move, (int[]){300, 300, 0});
-		//ft_mapiter(map, &print_map, &"1");
-		img_draw(*map, 2048, 2048, av[1]);
+		res.x = ft_atoi(av[2]);
+		res.x = res.x ? res.x : 1024;
+		res.y = ft_atoi(av[3]);
+		res.y = res.y ? res.y : 1024;
+	}
+	mlx.mlx_ptr = mlx_init();
+	b_map = ft_get_map(av[1]);
+//	ft_fit_map(b_map, res);
+	c_map = ft_rotate_map(b_map, 55, 0, 45);
+	printf("___________________\n");
+	ft_mapiter(c_map, &ft_point_move, (int[]){300, 300, 0});
+	ft_mapiter(c_map, &print_map, &"1");
+	img_draw(*c_map, 2048, 2048, av[1]);
 		//	ft_scale(map);
 		//	ft_rotate(map);
 		//		mlx_ptr = mlx_init();
 		//		win_ptr = mlx_new_window(mlx_ptr, 1024, 1024, "SuperTittle");
 	//		mlx_key_hook(win_ptr, hook_keydown, (void *)0);
 		//		mlx_loop(mlx_ptr);
-	}
 	return (0);
 }
