@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 14:28:57 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/09 11:47:17 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/09 15:10:00 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void	ft_mapiter(t_map *mp, void (*f)(t_vec4 *vec4, void *data), void *data)
 	while (i--)
 	{
 		f(&t[i], data);
-		if (t[i].x < mp->w_m)
-			mp->w_m = t[i].x;
-		if (t[i].x > mp->w)
-			mp->w = t[i].x;
-		if (t[i].y < mp->h_m)
-			mp->h_m = t[i].y;
-		if (t[i].y > mp->h)
-			mp->h = t[i].y;
+		if (t[i].x < mp->x_m)
+			mp->x_m = t[i].x;
+		if (t[i].x > mp->x)
+			mp->x = t[i].x;
+		if (t[i].y < mp->y_m)
+			mp->y_m = t[i].y;
+		if (t[i].y > mp->y)
+			mp->y = t[i].y;
 	}
 }
 

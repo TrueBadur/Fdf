@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 14:08:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/09 14:44:47 by bparker          ###   ########.fr       */
+/*   Updated: 2019/01/09 15:14:28 by bparker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,12 @@
 
 typedef struct	s_map
 {
-	int			w_m;
 	int			w;
 	int			h;
-	int			h_m;
+	int			x_m;
+	int			x;
+	int			y;
+	int			y_m;
 	int			d;
 	t_vector	*vec;
 }				t_map;
