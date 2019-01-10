@@ -6,7 +6,7 @@
 /*   By: bparker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 11:17:51 by bparker           #+#    #+#             */
-/*   Updated: 2019/01/09 18:16:07 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/10 22:08:44 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	img_to_win(t_map *mp, t_mlx mlx, t_vec2 res)
 
 	if (mp->y_m < 0 || mp->x_m < 0)
 	{
-		v.x = mp->x_m < 0 ? -mp->x_m : 0;
-		v.y = mp->y_m < 0 ? -mp->y_m : 0;
+		v.x = res.x / 2 - ((t_vec4 *)mp->vec->data)[mp->h / 2 * mp->w + mp->w / 2].x;
+		v.y = res.y / 2 - ((t_vec4 *)mp->vec->data)[mp->h / 2 * mp->w + mp->w / 2].y;
 		v.z = 0;
 		ft_mapiter(mp, &ft_point_move, &v);
 	}
@@ -61,6 +61,7 @@ int		hook_keydwn(int key, void *param)
 			((t_vec3 *)(((size_t *)param)[1]))->y += 5;
 		c_map = ft_rotate_map(((t_map **)param)[0], *(((t_vec3 **)param)[1]));
 		img_to_win(c_map, *((t_mlx *)(((size_t *)param)[2])), (*(((t_vec2 **)param)[3])));
+		printf("xr = %d, yr = %d, zr = %d\n", (*(((t_vec3 **)param)[1])).x, (*(((t_vec3 **)param)[1])).y,(*(((t_vec3 **)param)[1])).z);
 	}	
 	return (0);
 }
@@ -86,9 +87,9 @@ int		main(int ac, char **av)
 		res.y = ft_atoi(av[3]);
 		res.y = res.y ? res.y : 1024;
 	}
-	rot.x = 35;
+	rot.x = 0;
 	rot.y = 0;
-	rot.z = 45;
+	rot.z = 0;
 	mlx.mlx_ptr = mlx_init();
 	b_map = ft_get_map(av[1]);
 	ft_fit_map(b_map, res);
@@ -96,7 +97,7 @@ int		main(int ac, char **av)
 	mlx.mlx_ptr = mlx_init();
 	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, res.x, res.y, "SuperTittle");
 	img_to_win(c_map, mlx, res);
-	mlx_key_hook(mlx.win_ptr, hook_keydwn, (size_t *[]){b_map, &rot, &mlx, &res});
+	mlx_hook(mlx.win_ptr, 2, 5,  hook_keydwn, (size_t *[]){b_map, &rot, &mlx, &res});
 	mlx_loop(mlx.mlx_ptr);
 	return (0);
 }
