@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mtrx.h                                             :+:      :+:    :+:   */
+/*   ft_mtrx_free.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/07 16:49:03 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/10 23:13:57 by ehugh-be         ###   ########.fr       */
+/*   Created: 2019/01/10 22:34:09 by ehugh-be          #+#    #+#             */
+/*   Updated: 2019/01/10 22:36:41 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MTRX_H
-# define MTRX_H
-# define MTRX_INT 1
-# define MTRX_DOUBLE 2
-# include "libft.h"
+#include "mtrx.h"
 
-typedef struct		s_matrix
+void	ft_mtrx_destroy(t_mtrx **mtrx)
 {
-	int				w;
-	int				h;
-	void			*mtrx;
-	unsigned char	el_size;
-}					t_mtrx;
-
-t_mtrx				*ft_mtrx_init(int w, int h, unsigned char el_size);
-t_mtrx				*ft_mtrx_mlt(t_mtrx *mtrx1, t_mtrx *mtrx2);
-#endif
+	if (!mtrx || !*mtrx)
+		return ;
+	free((*mtrx)->mtrx);
+	free(*mtrx);
+	*mtrx = NULL;
+}
