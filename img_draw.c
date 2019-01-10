@@ -6,7 +6,7 @@
 /*   By: bparker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 00:32:21 by bparker           #+#    #+#             */
-/*   Updated: 2019/01/09 15:04:39 by bparker          ###   ########.fr       */
+/*   Updated: 2019/01/10 17:37:52 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_img	img_draw(t_map map, t_vec2 vec, t_mlx mlx)
 	cimg.img_data = mlx_get_data_addr(cimg.img_ptr, &cimg.bpp,
 			&cimg.size_line, &cimg.endian);
 	dot = (t_vec4*)(map.vec->data);
-	ft_mapiter(&map, &print_map, NULL);
+//	ft_mapiter(&map, &print_map, NULL);
 	while (++i < map.h)
 	{
 		j = 0;
