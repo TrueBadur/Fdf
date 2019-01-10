@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 19:33:13 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/09 17:38:48 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/10 22:16:17 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ void	ft_point_rot(t_vec4 *v, void *data)
 	int		t;
 
 	d = (double *)data;
+	if (d[2])
+	{
+		t = v->x;
+		v->x = t * cos(d[2]) - v->y * sin(d[2]);
+		v->y = t * sin(d[2]) + v->y * cos(d[2]);
+	}
 	if (d[0])
 	{
 		t = v->y;
@@ -46,11 +52,5 @@ void	ft_point_rot(t_vec4 *v, void *data)
 		t = v->x;
 		v->x = t * cos(d[1]) + v->z * sin(d[1]);
 		v->z = -t * sin(d[1]) + v->z * cos(d[1]);
-	}
-	if (d[2])
-	{
-		t = v->x;
-		v->x = t * cos(d[2]) - v->y * sin(d[2]);
-		v->y = t * sin(d[2]) + v->y * cos(d[2]);
 	}
 }
