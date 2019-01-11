@@ -6,7 +6,7 @@
 /*   By: bparker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 00:32:21 by bparker           #+#    #+#             */
-/*   Updated: 2019/01/10 17:37:52 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/11 11:58:29 by bparker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_img	img_draw(t_map map, t_vec2 vec, t_mlx mlx)
 	int		j;
 	t_vec4	*dot;
 	t_img	cimg;
+	t_vec2	check;
 
 	i = -1;
 	cimg.img_ptr = mlx_new_image(mlx.mlx_ptr, vec.x, vec.y);
@@ -43,12 +44,22 @@ t_img	img_draw(t_map map, t_vec2 vec, t_mlx mlx)
 		j = 0;
 		while (j < map.w)
 		{
-			if (i != map.h - 1)
+			check.x = border_check(dot[i * map.w + j], dot[(i + 1) * map.w + j], vec);
+			printf("check.x:%d\n", check.x);
+			if (i != map.h - 1 && check.x == 1)
 				img_drawline(dot[i * map.w + j],
 						dot[(i + 1) * map.w + j], mlx, cimg);
-			if (j != map.w - 1)
+			if (i != map.h - 1 && check.x == -1)
+				img_drawlinesafe(dot[i * map.w + j],
+						dot[(i + 1) * map.w + j], mlx, cimg, vec);
+			check.y = border_check(dot[i * map.w + j], dot[i * map.w + j + 1], vec);
+			printf("check.y:%d\n", check.y);
+			if (j != map.w - 1 && check.y == 1)
 				img_drawline(dot[i * map.w + j],
 						dot[i * map.w + j + 1], mlx, cimg);
+			if (j != map.w - 1 && check.y == -1)
+				img_drawlinesafe(dot[i * map.w + j],
+						dot[i * map.w + j + 1], mlx, cimg, vec);
 			j++;
 		}
 	}
