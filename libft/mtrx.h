@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 16:49:03 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/10 23:17:13 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/11 07:35:32 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,8 @@ typedef struct		s_matrix
 
 void				ft_mtrx_destroy(t_mtrx **mtrx);
 t_mtrx				*ft_mtrx_init(int w, int h, unsigned char el_size);
+t_mtrx				*ft_mtrx_ident(int w, unsigned char el_size);
 t_mtrx				*ft_mtrx_mlt(t_mtrx *mtrx1, t_mtrx *mtrx2);
+t_mtrx				*ft_mtrx_mlt_destr(t_mtrx *mtrx1, t_mtrx *mtrx2);
+void				ft_mtrx_print(t_mtrx *m);
 #endif

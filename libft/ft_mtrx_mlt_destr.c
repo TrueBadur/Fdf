@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtrx_free.c                                     :+:      :+:    :+:   */
+/*   ft_mtrx_mlt_destr.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/10 22:34:09 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/11 04:17:55 by ehugh-be         ###   ########.fr       */
+/*   Created: 2019/01/11 00:17:35 by ehugh-be          #+#    #+#             */
+/*   Updated: 2019/01/11 03:57:59 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mtrx.h"
 
-void	ft_mtrx_destroy(t_mtrx **mtrx)
+t_mtrx	*ft_mtrx_mlt_destr(t_mtrx *m1, t_mtrx *m2)
 {
-	if (!mtrx || !*mtrx)
-		return ;
-	free((*mtrx)->mtrx);
-	free(*mtrx);
-	*mtrx = NULL;
+	t_mtrx *ret;
+
+	if (!m1 || !m2)
+		return (NULL);
+	ret = ft_mtrx_mlt(m1, m2);
+	ft_mtrx_destroy(&m2);
+	ft_mtrx_destroy(&m1);
+	return (ret);
 }

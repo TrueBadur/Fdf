@@ -6,11 +6,12 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 16:36:33 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/10 23:06:22 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/11 07:04:56 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mtrx.h"
+#include <stdio.h>
 
 static void	intiter(t_mtrx *ret, t_mtrx *m1, t_mtrx *m2)
 {
@@ -33,15 +34,22 @@ static void doubleiter(t_mtrx *ret, t_mtrx *m1, t_mtrx *m2)
 {
 	int		i;
 	int		j;
+	int		k;
+	double	*mm1;
+	double	*mm2;
 
-	i = m1->h * m2->w;
+	i = m1->h;
+	mm1 = (double *)(m1->mtrx);
+	mm2 = (double *)(m2->mtrx);
 	while (i--)
 	{
-		j = m1->w;
+		j = m2->w;
 		while (j--)
 		{
-			((double *)(ret->mtrx))[i] += ((double *)(m1->mtrx))[(i / m1->h - 1)
-				* m1->w + j] * ((double *)(m2->mtrx))[m2->w * j + i % m2->w];
+			k = m2->h;
+			while (k--)
+				((double *)ret->mtrx)[i * ret->h + j] += mm1[i * m1->w + k] *
+					mm2[k * m2->w + j];
 		}
 	}
 }
@@ -50,6 +58,8 @@ t_mtrx	*ft_mtrx_mlt(t_mtrx *m1, t_mtrx *m2)
 {
 	t_mtrx	*ret;
 
+	if (!m1 || !m2)
+		return (NULL);
 	if (m1->w != m2->h || m1->el_size != m2->el_size)
 		return (NULL);
 	if (!(ret = ft_mtrx_init(m1->h, m2->w, m1->el_size)))

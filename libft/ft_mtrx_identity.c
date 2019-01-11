@@ -1,38 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtrx_init.c                                     :+:      :+:    :+:   */
+/*   ft_mtrx_identity.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/10 22:27:24 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/11 03:29:44 by ehugh-be         ###   ########.fr       */
+/*   Created: 2019/01/11 07:22:29 by ehugh-be          #+#    #+#             */
+/*   Updated: 2019/01/11 07:33:54 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mtrx.h"
 
-t_mtrx	*ft_mtrx_init(int w, int h, unsigned char el_size)
+t_mtrx	*ft_mtrx_ident(int w, unsigned char el_size)
 {
 	t_mtrx	*ret;
-	char	t;
+	int		t;
 
+	if (!w)
+		return (NULL);
 	if (!(ret = malloc(sizeof(t_mtrx))))
 		return (NULL);
 	if (el_size == MTRX_INT)
 		t = sizeof(int);
-	else if (el_size == MTRX_DOUBLE)
-		t = sizeof(double);
 	else
-		t = sizeof(float);
-	if (!(ret->mtrx = malloc(w * h * t)))
+		t = sizeof(double);
+	if (!(ret->mtrx = malloc(w * w * t)))
 	{
 		free(ret);
 		return (NULL);
 	}
 	ret->w = w;
-	ret->h = h;
+	ret->h = w;
 	ret->el_size = el_size;
-	ft_bzero(ret->mtrx, w * h * t);
+	t = w;
+	if (el_size == MTRX_DOUBLE)
+		while (t--)
+			((double *)ret->mtrx)[t * ret->w + t] = 1.0f;
+	else
+		while (t--)
+			((int *)ret->mtrx)[t * ret->w + t] = 1;
 	return (ret);
 }
