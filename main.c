@@ -6,7 +6,7 @@
 /*   By: bparker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 11:17:51 by bparker           #+#    #+#             */
-/*   Updated: 2019/01/11 10:53:11 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/12 11:36:04 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,8 @@ t_map	*ft_transform_map(t_map *mp, t_trnsfrm *trnsfrm)
 	tmtrx = ft_mtrx_mlt_destr(tmtrx, ft_move_mtrx(trnsfrm->mov));
 	tmtrx = ft_mtrx_mlt_destr(tmtrx, ft_rotate_mtrx(trnsfrm->rot));
 	tmtrx = ft_mtrx_mlt_destr(tmtrx, ft_scale_mtrx(trnsfrm->scale));
-	printf("+++++++++++++++\n");
-	ft_mtrx_print(tmtrx);
-	printf("---------------\n");
-	printf("+++++++++++++++\n");
-	ft_mtrx_print(tmtrx);
-	printf("---------------\n");
-	printf("+++++++++++++++\n");
-	ft_mtrx_print(tmtrx);
-	printf("---------------\n");
 	if (trnsfrm->persp)
 		tmtrx = ft_mtrx_mlt_destr(tmtrx, ft_persp_mtrx(trnsfrm->persp));
-	printf("+++++++++++++++\n");
-	ft_mtrx_print(tmtrx);
-	printf("---------------\n");
 	trnsfrm->b = 0;
 	return (ft_mapiter_c(mp, &ft_transform_point, tmtrx));
 }
@@ -53,17 +41,12 @@ int		img_to_win(void *param)
 	mlx = (t_mlx *)(((int **)param)[2]);
 	if (!t->b)
 		return (1);
-	printf("HELLO!1\n");
 	mp_c = ft_transform_map(mp, t);
 	ft_mapiter(mp_c, &print_map, NULL);
 	img = img_draw(*mp_c, mlx->res, *mlx);
-	printf("HELLO!3\n");
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, img.img_ptr, 0, 0);
-	printf("HELLO!4\n");
 	map_free(&mp_c);
-	printf("HELLO!5\n");
 	mlx_destroy_image(mlx->mlx_ptr, img.img_ptr);
-	printf("HELLO!^\n");
 	return (0);
 }
 
