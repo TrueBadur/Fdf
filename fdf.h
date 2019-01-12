@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 14:08:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/11 12:29:07 by bparker          ###   ########.fr       */
+/*   Updated: 2019/01/12 14:03:18 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,9 @@ typedef struct	s_mlx
 typedef struct	s_transforms
 {
 	t_vec3		rot;
-	t_vec3		scale;
+	t_vec3_f	scale;
 	t_vec3		mov;
+	t_vec3		mov1;
 	int			persp;
 	char		b;
 }				t_trnsfrm;
@@ -91,7 +92,7 @@ void			ft_fit_map(t_map *mp, t_trnsfrm *tr, t_vec2 res);
 t_mtrx			*x_rot_mtrx(int x);
 t_mtrx			*y_rot_mtrx(int y);
 t_mtrx			*z_rot_mtrx(int z);
-t_mtrx			*ft_scale_mtrx(t_vec3 v);
+t_mtrx			*ft_scale_mtrx(t_vec3_f v);
 t_mtrx			*ft_rotate_mtrx(t_vec3 v);
 t_mtrx			*ft_move_mtrx(t_vec3 v);
 t_mtrx			*ft_persp_mtrx(int z);
