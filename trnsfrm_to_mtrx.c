@@ -6,13 +6,13 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 01:14:04 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/11 10:54:00 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/12 13:47:52 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_mtrx	*ft_scale_mtrx(t_vec3 v)
+t_mtrx	*ft_scale_mtrx(t_vec3_f v)
 {
 	t_mtrx	*ret;
 
@@ -65,9 +65,9 @@ t_mtrx	*ft_persp_mtrx(int z)
 	((double *)ret->mtrx)[0] = 1;
 	((double *)ret->mtrx)[5] = 1;
 	((double *)ret->mtrx)[10] = 1;
-	((double *)ret->mtrx)[12] = -.03;
-	((double *)ret->mtrx)[13] = -.03;
-	((double *)ret->mtrx)[14] = -.02;
+	((double *)ret->mtrx)[12] = 0;
+	((double *)ret->mtrx)[13] = 0;
+	((double *)ret->mtrx)[14] = -.0001 * z;
 	((double *)ret->mtrx)[15] = 1;
 	ft_mtrx_print(ret);
 	return (ret);
