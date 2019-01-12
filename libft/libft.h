@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:55:20 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/09 12:38:03 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/12 18:19:22 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,15 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include "get_next_line.h"
+# include "t_vec.h"
 # include "btavl.h"
 # include "mtrx.h"
 # include <unistd.h>
 # include <string.h>
+# define IN_RANGE_II(a, b, c) (a <= b && b <= c)
+# define IN_RANGE_CI(a, b, c) (a < b && b <= c)
+# define IN_RANGE_IC(a, b, c) (a <= b && b < c)
+# define IN_RANGE_CC(a, b, c) (a < b && b < c)
 
 typedef struct		s_list
 {
@@ -25,35 +30,6 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
-
-typedef struct		s_vector2
-{
-	int		x;
-	int		y;
-}					t_vec2;
-
-typedef struct		s_vector3
-{
-	int		x;
-	int		y;
-	int		z;
-}					t_vec3;
-
-typedef struct		s_vector4
-{
-	int	x;
-	int	y;
-	int	z;
-	int	color;
-}					t_vec4;
-
-typedef struct		s_vector
-{
-	void			*data;
-	unsigned int	cap;
-	unsigned int	len;
-	unsigned int	offset;
-}					t_vector;
 
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_putnbr_fd(int n, int fd);
@@ -121,10 +97,5 @@ int					ft_abs(int a);
 int					ft_isspace(int c);
 void				ft_foreachint(int **arr, size_t len, void (*f)(int *n));
 int					*ft_foreachintm(const int *arr, size_t len, int (*f)(int));
-t_vector			*ft_vecinit(size_t cap);
-void				ft_vecdel(void **vect);
-t_vector			*ft_vecpush(t_vector *vec, void *data, size_t s);
-t_vector			*ft_vecgrow(t_vector *vec, size_t s);
-t_vector			*ft_vecshrink(t_vector *vec, unsigned int offset);
 int					ft_sqrt(int c);
 #endif
