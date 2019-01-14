@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 19:44:47 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/14 20:14:55 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/14 20:28:31 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int		hook_keydwn(int key, void *param)
 	{
 		t->b = 1;
 		if (key == 5)
-			t->mov1.z += 3 *  mp->w;
+			t->mov_wrld.z += 3 *  mp->w;
 		if (key == 17)
-			t->mov1.z -= 3 * mp->w;
+			t->mov_wrld.z -= 3 * mp->w;
 	}
 	if (key == 0 || key == 1 || key == 12 || key == 13 || key == 6 || key == 7)
 	{
