@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 04:31:51 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/11 09:19:15 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/14 21:10:26 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,22 @@
 
 void	ft_mtrx_print(t_mtrx *m)
 {
-	printf("matrix %d x %d:\n", m->w, m->h);
-	for (int i = 0; i < m->w * m->h; i++)
+	int i;
+
+	i = -1;
+	ft_putstr("matrix ");
+	ft_putnbr(m->w);
+	ft_putstr(" x ");
+	ft_putnbr(m->h);
+	ft_putendl(":");
+	while (++i < m->w * m->h)
 	{
 		if (i % m->w == 0 && i > 0)
-			printf("\n");
-		printf("%.10f ", ((double *)m->mtrx)[i]);
+			ft_putendl("");
+		ft_putnbr((int)((double *)m->mtrx)[i]);
+		ft_putstr(".");
+		ft_putnbr((int)((((double *)m->mtrx)[i] - (int)((double *)m->mtrx)[i]) *
+					10000000000));
 	}
-	printf("\n");
+	ft_putendl("");
 }
