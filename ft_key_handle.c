@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 21:45:28 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/14 21:59:21 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/14 23:14:56 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,33 @@ void	key_move(int key, t_trnsfrm *t, t_map *mp)
 		t->mov_wrld.z += 3 * mp->w;
 	if (key == 17)
 		t->mov_wrld.z -= 3 * mp->w;
+	if (key == 123)
+		t->mov_wrld.x -= 10;
+	if (key == 124)
+		t->mov_wrld.x += 10;
+	if (key == 125)
+		t->mov_wrld.y += 10;
+	if (key == 126)
+		t->mov_wrld.y -= 10;
+}
+
+void	key_scale(int key, t_trnsfrm *t)
+{
+	t->b = 1;
+	if (key == 43)
+	{
+		t->scale.x *= 1.1;
+		t->scale.y *= 1.1;
+		t->scale.z *= 1.1;
+	}
+	if (key == 47)
+	{
+		t->scale.x /= 1.1;
+		t->scale.y /= 1.1;
+		t->scale.z /= 1.1;
+	}
+	if (key == 41)
+		t->scale.z *= 1.1;
+	if (key == 39)
+		t->scale.z /= 1.1;
 }

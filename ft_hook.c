@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 19:44:47 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/14 21:56:18 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/14 23:18:23 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ int		hook_keydwn(int key, void *param)
 	mp = (t_map *)(((int **)param)[0]);
 	if (key == 35 || key == 30 || key == 33)
 		key_persp(key, t);
-	if (key == 5 || key == 17)
+	if (key == 5 || key == 17 || (key >= 123 && key <= 126))
 		key_move(key, t, mp);
 	if (key == 0 || key == 1 || key == 12 || key == 13 || key == 6 || key == 7)
 		key_rot(key, t);
+	if (key == 41 || key == 43 || key == 39 || key == 47)
+		key_scale(key, t);
 	if (t->b)
 		img_to_win(param);
 	return (0);

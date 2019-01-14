@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 14:08:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/14 22:08:16 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/14 23:18:09 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,5 @@ int				mouse_hook(int but, int x, int y, void *param);
 void			key_rot(int key, t_trnsfrm *t);
 void			key_persp(int key, t_trnsfrm *t);
 void			key_move(int key, t_trnsfrm *t, t_map *mp);
+void			key_scale(int key, t_trnsfrm *t);
 #endif
