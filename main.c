@@ -6,7 +6,7 @@
 /*   By: bparker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 11:17:51 by bparker           #+#    #+#             */
-/*   Updated: 2019/01/12 16:17:31 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/14 20:14:54 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,61 +66,11 @@ int		img_to_win(void *param)
 	if (!t->b)
 		return (1);
 	mp_c = ft_transform_map(mp, t);
-	ft_mapiter(mp_c, &print_map, NULL);
+	//ft_mapiter(mp_c, &print_map, NULL);
 	img = img_draw(*mp_c, mlx->res, *mlx);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, img.img_ptr, 0, 0);
 	map_free(&mp_c);
 	mlx_destroy_image(mlx->mlx_ptr, img.img_ptr);
-	return (0);
-}
-
-int		hook_keydwn(int key, void *param)
-{
-	t_map		*c_map;
-	t_trnsfrm	*t;
-	t_map		*mp;
-
-	printf("%d\n", key);
-	if (key == 53)
-		exit(0);
-	t = (t_trnsfrm *)(((int **)param)[1]);
-	mp = (t_map *)(((int **)param)[0]);
-	if (key == 35 || key == 30 || key == 33)
-	{
-		t->b = 1;
-		if (key == 35)
-			t->persp = t->persp ? 0 : 1;
-		if (key == 30 && t->persp > 1)
-			t->persp--;
-		if (key == 33 && t->persp != 0)
-			t->persp++;
-	}
-	if (key == 5 || key == 17)
-	{
-		t->b = 1;
-		if (key == 5)
-			t->mov1.z += 3 *  mp->w;
-		if (key == 17)
-			t->mov1.z -= 3 * mp->w;
-	}
-	if (key == 0 || key == 1 || key == 12 || key == 13 || key == 6 || key == 7)
-	{
-		t->b = 1;
-		if (key == 0)
-			t->rot.z -= 5;
-		else if (key == 1)
-			t->rot.z += 5;
-		else if (key == 6)
-			t->rot.x -= 5;
-		else if (key == 7)
-			t->rot.x += 5;
-		else if (key == 12)
-			t->rot.y -= 5;
-		else if (key == 13)
-			t->rot.y += 5;
-	}	
-	if (t->b)
-		img_to_win(param);
 	return (0);
 }
 
@@ -169,6 +119,8 @@ int		main(int ac, char **av)
 	//ft_fit_map(b_map, &trnsfrm, mlx.res);
 	img_to_win((int *[]){(int *)b_map, (int *)&trnsfrm, (int *)&mlx});
 	mlx_hook(mlx.win_ptr, 2, 5,  hook_keydwn,
+			(int *[]){(int *)b_map, (int *)&trnsfrm, (int *)&mlx});
+	mlx_mouse_hook(mlx.win_ptr, &mouse_hook,
 			(int *[]){(int *)b_map, (int *)&trnsfrm, (int *)&mlx});
 	mlx_loop(mlx.mlx_ptr);
 	return (0);

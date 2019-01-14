@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 14:08:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/12 14:03:18 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/14 19:53:53 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,7 @@ t_mtrx			*ft_move_mtrx(t_vec3 v);
 t_mtrx			*ft_persp_mtrx(int z);
 void			map_free(t_map **mp);
 void			mlx_free(t_mlx **mlx);
+int				img_to_win(void *param);
+int				hook_keydwn(int key, void *param);
+int				mouse_hook(int but, int x, int y, void *param);
 #endif
