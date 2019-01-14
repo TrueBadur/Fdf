@@ -6,19 +6,11 @@
 /*   By: bparker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 00:32:21 by bparker           #+#    #+#             */
-/*   Updated: 2019/01/11 11:58:29 by bparker          ###   ########.fr       */
+/*   Updated: 2019/01/14 20:14:59 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-int		hook_keydown(int key, void *param)
-{
-	(void)param;
-	if (key == 53)
-		exit(1);
-	return (0);
-}
 
 void print_map(t_vec4 *v, void * data)
 {
@@ -45,7 +37,7 @@ t_img	img_draw(t_map map, t_vec2 vec, t_mlx mlx)
 		while (j < map.w)
 		{
 			check.x = border_check(dot[i * map.w + j], dot[(i + 1) * map.w + j], vec);
-			printf("check.x:%d\n", check.x);
+//			printf("check.x:%d\n", check.x);
 			if (i != map.h - 1 && check.x == 1)
 				img_drawline(dot[i * map.w + j],
 						dot[(i + 1) * map.w + j], mlx, cimg);
@@ -53,7 +45,7 @@ t_img	img_draw(t_map map, t_vec2 vec, t_mlx mlx)
 				img_drawlinesafe(dot[i * map.w + j],
 						dot[(i + 1) * map.w + j], mlx, cimg, vec);
 			check.y = border_check(dot[i * map.w + j], dot[i * map.w + j + 1], vec);
-			printf("check.y:%d\n", check.y);
+//			printf("check.y:%d\n", check.y);
 			if (j != map.w - 1 && check.y == 1)
 				img_drawline(dot[i * map.w + j],
 						dot[i * map.w + j + 1], mlx, cimg);

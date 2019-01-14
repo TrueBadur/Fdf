@@ -6,7 +6,7 @@
 /*   By: bparker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 12:43:55 by bparker           #+#    #+#             */
-/*   Updated: 2019/01/11 11:55:21 by bparker          ###   ########.fr       */
+/*   Updated: 2019/01/14 20:00:23 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	img_drawline(t_vec4 dot0, t_vec4 dot1, t_mlx mlx, t_img cimg)
 	t_vec2	sxy;
 	t_vec2	er;
 
-	printf("x[%d]y[%d],x1[%d],y1[%d]", dot0.x, dot0.y, dot1.x, dot1.y);
+//	printf("x[%d]y[%d],x1[%d],y1[%d]", dot0.x, dot0.y, dot1.x, dot1.y);
 	er.y = 0;
 	dxy.x = abs(dot1.x - dot0.x);
 	dxy.y = abs(dot1.y - dot0.y);
