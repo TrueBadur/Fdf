@@ -6,7 +6,7 @@
 /*   By: bparker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 11:17:51 by bparker           #+#    #+#             */
-/*   Updated: 2019/01/14 20:14:54 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/14 20:33:02 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,25 @@
 #include "fdf.h"
 #include "fdf.h"
 
-t_map	*ft_transform_map(t_map *mp, t_trnsfrm *trnsfrm)
+t_map		*ft_transform_map(t_map *mp, t_trnsfrm *trnsfrm)
 {
 	t_mtrx	*tmtrx;
 	t_map	*map_c;
 
 	tmtrx = ft_mtrx_ident(4, MTRX_DOUBLE);
-//	printf("=================================\n");
-//	ft_mtrx_print(tmtrx);
-//	printf("=================================\n");
-	tmtrx = ft_mtrx_mlt_destr(tmtrx, ft_move_mtrx(trnsfrm->mov));
+	tmtrx = ft_mtrx_mlt_destr(tmtrx, ft_move_mtrx(trnsfrm->mov_scr));
 	if (trnsfrm->persp)
 		tmtrx = ft_mtrx_mlt_destr(tmtrx, ft_persp_mtrx(trnsfrm->persp));
-//	printf("=================================\n");
-//	ft_mtrx_print(tmtrx);
-//	printf("=================================\n");
-	tmtrx = ft_mtrx_mlt_destr(tmtrx, ft_move_mtrx(trnsfrm->mov1));
+	tmtrx = ft_mtrx_mlt_destr(tmtrx, ft_move_mtrx(trnsfrm->mov_wrld));
 	tmtrx = ft_mtrx_mlt_destr(tmtrx, ft_rotate_mtrx(trnsfrm->rot));
-//	printf("=================================\n");
-//	ft_mtrx_print(tmtrx);
-//	printf("=================================\n");
 	tmtrx = ft_mtrx_mlt_destr(tmtrx, ft_scale_mtrx(trnsfrm->scale));
-//	printf("=================================\n");
-//	ft_mtrx_print(tmtrx);
-//	printf("=================================\n");
 	trnsfrm->b = 0;
-//	printf("=================================\n");
-//	ft_mtrx_print(tmtrx);
-//	printf("=================================\n");
 	map_c = ft_mapiter_c(mp, &ft_transform_point, tmtrx);
 	ft_mtrx_destroy(&tmtrx);
 	return (map_c);
 }
 
-int		img_to_win(void *param)
+int			img_to_win(void *param)
 {
 	t_img		img;
 	t_map		*mp;
@@ -58,15 +43,9 @@ int		img_to_win(void *param)
 	mp = (t_map *)(((int **)param)[0]);
 	t = (t_trnsfrm *)(((int **)param)[1]);
 	mlx = (t_mlx *)(((int **)param)[2]);
-	//printf("-------------------------------------------\ntransform before img_to_win\nrot.x = %d, rot.y = %d, rot.z = %d\nmove.x = %d, move.y = %d, move.z = %d\nscale.x = %f, scale.y = %f, scale.z = %f\npersp = %d\nb = %d\n-------------------------------------------\n",
-	//		t->rot.x, t->rot.y, t->rot.z,
-	//		t->mov.x, t->mov.y, t->mov.z,
-	//		t->scale.x, t->scale.y, t->scale.z,
-	//		t->persp, t->b);
 	if (!t->b)
 		return (1);
 	mp_c = ft_transform_map(mp, t);
-	//ft_mapiter(mp_c, &print_map, NULL);
 	img = img_draw(*mp_c, mlx->res, *mlx);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, img.img_ptr, 0, 0);
 	map_free(&mp_c);
@@ -74,7 +53,7 @@ int		img_to_win(void *param)
 	return (0);
 }
 
-static void init(int ac, char **av, t_trnsfrm *t, t_mlx *mlx)
+static void	init(int ac, char **av, t_trnsfrm *t, t_mlx *mlx)
 {
 	mlx->res.x = 1024;
 	mlx->res.y = 1024;
@@ -91,34 +70,30 @@ static void init(int ac, char **av, t_trnsfrm *t, t_mlx *mlx)
 	t->scale.x = 30.0;
 	t->scale.y = 30.0;
 	t->scale.z = 6.0;
-	t->mov.x = mlx->res.x / 2;
-	t->mov.y = mlx->res.y / 2;
-	t->mov.z = 0;
-	t->mov1.x = 0;
-	t->mov1.y = 0;
-	t->mov1.z = 0;
+	t->mov_scr.x = mlx->res.x / 2;
+	t->mov_scr.y = mlx->res.y / 2;
+	t->mov_scr.z = 0;
+	t->mov_wrld.x = 0;
+	t->mov_wrld.y = 0;
+	t->mov_wrld.z = 0;
 	t->persp = 0;
-	mlx->mlx_ptr = mlx_init();
-	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, mlx->res.x, mlx->res.y,
-			MW_NAME);
 	t->b = 1;
 }
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	t_mlx		mlx;
 	t_map		*b_map;
 	t_trnsfrm	trnsfrm;
 
-	//	t_coords	xy;
-
 	if (ac == 1 || ac == 3 || ac > 4)
 		exit(ft_error(ARG_ERROR));
 	b_map = ft_get_map(av[1]);
 	init(ac, av, &trnsfrm, &mlx);
-	//ft_fit_map(b_map, &trnsfrm, mlx.res);
+	mlx.mlx_ptr = mlx_init();
+	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, mlx.res.x, mlx.res.y, MW_NAME);
 	img_to_win((int *[]){(int *)b_map, (int *)&trnsfrm, (int *)&mlx});
-	mlx_hook(mlx.win_ptr, 2, 5,  hook_keydwn,
+	mlx_hook(mlx.win_ptr, 2, 5, hook_keydwn,
 			(int *[]){(int *)b_map, (int *)&trnsfrm, (int *)&mlx});
 	mlx_mouse_hook(mlx.win_ptr, &mouse_hook,
 			(int *[]){(int *)b_map, (int *)&trnsfrm, (int *)&mlx});
