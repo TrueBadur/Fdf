@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 04:31:51 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/14 21:10:26 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/14 22:13:15 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	ft_mtrx_print(t_mtrx *m)
 		ft_putstr(".");
 		ft_putnbr((int)((((double *)m->mtrx)[i] - (int)((double *)m->mtrx)[i]) *
 					10000000000));
+		ft_putstr(" ");
 	}
 	ft_putendl("");
 }
