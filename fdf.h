@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 14:08:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/14 20:26:41 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/14 20:54:01 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,13 @@ int				ft_error(int er);
 void			ft_mapiter(t_map *mp, void (*f)(t_vec4 *, void *), void *data);
 t_map			*ft_mapiter_c(t_map *mp, void (*f)(t_vec4 *, void *),
 								void *data);
-void			img_drawpixel(char *img_data, void *mlx_ptr, t_vec4 dot, int line_size);
-void			img_drawpixelsafe(char *img_data, void *mlx_ptr, t_vec4 dot, int line_size, t_vec2 map);
+void			img_drawpixel(char *img_data, void *mlx_ptr, t_vec4 dot,
+		int line_size);
+void			img_drawpxlsafe(char *img_data, t_mlx mlx, t_vec4 dot,
+		int line_size);
 void			img_drawline(t_vec4 dot0, t_vec4 dot1, t_mlx mlx, t_img cimg);
-void			img_drawlinesafe(t_vec4 dot0, t_vec4 dot1, t_mlx mlx, t_img cimg, t_vec2 map);
+void			img_drawlinesafe(t_vec4 dot0, t_vec4 dot1, t_mlx mlx,
+		t_img cimg);
 t_img			img_draw(t_map map, t_vec2 vec, t_mlx mlx);
 int				border_check(t_vec4 dot0, t_vec4 dot1, t_vec2 map);
 t_map			*ft_rotate_map(t_map *mp, t_vec3 vec);

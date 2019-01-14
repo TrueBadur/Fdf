@@ -6,36 +6,31 @@
 /*   By: bparker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 21:41:41 by bparker           #+#    #+#             */
-/*   Updated: 2019/01/14 20:00:42 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/14 20:58:37 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	img_drawpixel(char *img_data, void *mlx_ptr, t_vec4 dot, int line_size)
+void	img_drawpxl(char *img_data, void *mlx_ptr, t_vec4 dot, int line_size)
 {
 	unsigned int	col1;
 	unsigned int	*pix_ptr;
 
-//	printf("start[%d][%d]\n", dot.x, dot.y);
 	col1 = mlx_get_color_value(mlx_ptr, dot.color == 0 ? 0xFFFFFF : dot.color);
 	pix_ptr = (unsigned int *)(img_data + dot.x * 4 + line_size * dot.y);
-//	printf("%p\n", pix_ptr);
 	*pix_ptr = col1;
-//	printf("end\n");
 }
 
-void	 img_drawpixelsafe(char *img_data, void *mlx_ptr, t_vec4 dot, int line_size, t_vec2 map)
+void	img_drawpxlsafe(char *img_data, t_mlx mlx, t_vec4 dot, int line_sz)
 {
 	unsigned int	col1;
 	unsigned int	*pix_ptr;
 
-//	printf("hello\n");
-	if (dot.x < 0 || dot.x >= map.x || dot.y < 0 || dot.y >= map.y)
+	if (dot.x < 0 || dot.x >= mlx.res.x || dot.y < 0 || dot.y >= mlx.res.y)
 		return ;
-//	printf("???%d\n", map.y);
-	col1 = mlx_get_color_value(mlx_ptr, dot.color == 0 ? 0xFFFFFF : dot.color);
-	pix_ptr = (unsigned int *)(img_data + dot.x * 4 + line_size * dot.y);
+	col1 = mlx_get_color_value(mlx.mlx_ptr, dot.color == 0 ? 0xFFFFFF :
+			dot.color);
+	pix_ptr = (unsigned int *)(img_data + dot.x * 4 + line_sz * dot.y);
 	*pix_ptr = col1;
-//	printf("ne fact\n");
 }
