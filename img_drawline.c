@@ -6,7 +6,7 @@
 /*   By: bparker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 12:43:55 by bparker           #+#    #+#             */
-/*   Updated: 2019/01/14 20:54:04 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/14 22:08:23 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	img_drawline(t_vec4 dot0, t_vec4 dot1, t_mlx mlx, t_img cimg)
 	er.x = (dxy.x > dxy.y ? dxy.x : -dxy.y) / 2;
 	while (1)
 	{
-		img_drawpixel(cimg.img_data, mlx.mlx_ptr, dot0, cimg.size_line);
+		img_drawpxl(cimg.img_data, mlx.mlx_ptr, dot0, cimg.size_line);
 		if (dot0.x == dot1.x && dot0.y == dot1.y)
 			break ;
 		er.y = er.x;
