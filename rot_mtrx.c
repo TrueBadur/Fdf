@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 02:39:05 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/11 02:50:26 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/14 20:20:58 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_mtrx	*x_rot_mtrx(int x)
 
 	if (!(ret = ft_mtrx_init(4, 4, MTRX_DOUBLE)))
 		return (NULL);
-	xr = x * M_PI /180;
+	xr = x * M_PI / 180;
 	((double *)ret->mtrx)[0] = 1;
 	((double *)ret->mtrx)[5] = cos(xr);
 	((double *)ret->mtrx)[6] = -sin(xr);
@@ -33,9 +33,10 @@ t_mtrx	*y_rot_mtrx(int y)
 {
 	double	yr;
 	t_mtrx	*ret;
+
 	if (!(ret = ft_mtrx_init(4, 4, MTRX_DOUBLE)))
 		return (NULL);
-	yr = y * M_PI /180;
+	yr = y * M_PI / 180;
 	((double *)ret->mtrx)[0] = cos(yr);
 	((double *)ret->mtrx)[2] = sin(yr);
 	((double *)ret->mtrx)[5] = 1;
@@ -52,7 +53,7 @@ t_mtrx	*z_rot_mtrx(int z)
 
 	if (!(ret = ft_mtrx_init(4, 4, MTRX_DOUBLE)))
 		return (NULL);
-	zr = z * M_PI /180;
+	zr = z * M_PI / 180;
 	((double *)ret->mtrx)[0] = cos(zr);
 	((double *)ret->mtrx)[1] = -sin(zr);
 	((double *)ret->mtrx)[4] = sin(zr);

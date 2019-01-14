@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 01:14:04 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/12 13:47:52 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/14 20:20:01 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ t_mtrx	*ft_rotate_mtrx(t_vec3 v)
 	ft_mtrx_print(ret);
 	return (ret);
 }
+
 t_mtrx	*ft_move_mtrx(t_vec3 v)
 {
 	t_mtrx *ret;
