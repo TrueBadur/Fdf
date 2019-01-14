@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 16:36:33 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/11 07:04:56 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/14 20:39:21 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	intiter(t_mtrx *ret, t_mtrx *m1, t_mtrx *m2)
 	}
 }
 
-static void doubleiter(t_mtrx *ret, t_mtrx *m1, t_mtrx *m2)
+static void	doubleiter(t_mtrx *ret, t_mtrx *m1, t_mtrx *m2)
 {
 	int		i;
 	int		j;
@@ -54,7 +54,7 @@ static void doubleiter(t_mtrx *ret, t_mtrx *m1, t_mtrx *m2)
 	}
 }
 
-t_mtrx	*ft_mtrx_mlt(t_mtrx *m1, t_mtrx *m2)
+t_mtrx		*ft_mtrx_mlt(t_mtrx *m1, t_mtrx *m2)
 {
 	t_mtrx	*ret;
 

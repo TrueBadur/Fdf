@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 19:33:13 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/12 12:01:41 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/14 20:38:18 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void	ft_transform_point(t_vec4 *v, void *data)
 	((double *)mtrx->mtrx)[1] = v->y;
 	((double *)mtrx->mtrx)[2] = v->z;
 	((double *)mtrx->mtrx)[3] = 1;
-//	ft_mtrx_print(mtrx);
-//	ft_mtrx_print((t_mtrx *)data);
 	if (!(tmp = ft_mtrx_mlt((t_mtrx *)data, mtrx)))
 		return ;
 	ft_mtrx_destroy(&mtrx);
@@ -35,11 +33,8 @@ void	ft_transform_point(t_vec4 *v, void *data)
 	v->x = round((((double *)mtrx->mtrx)[0]) / t);
 	v->y = round((((double *)mtrx->mtrx)[1]) / t);
 	v->z = round((((double *)mtrx->mtrx)[2]) / t);
-//	printf("v.x = %d, v.y = %d, v.z = %d\n", v->x, v->y, v->z);
-//	ft_mtrx_print(mtrx);
 	ft_mtrx_destroy(&mtrx);
 }
-
 
 void	ft_point_scale(t_vec4 *v, void *scale)
 {
