@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 14:08:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/14 20:54:01 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/14 22:08:16 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int				ft_error(int er);
 void			ft_mapiter(t_map *mp, void (*f)(t_vec4 *, void *), void *data);
 t_map			*ft_mapiter_c(t_map *mp, void (*f)(t_vec4 *, void *),
 								void *data);
-void			img_drawpixel(char *img_data, void *mlx_ptr, t_vec4 dot,
+void			img_drawpxl(char *img_data, void *mlx_ptr, t_vec4 dot,
 		int line_size);
 void			img_drawpxlsafe(char *img_data, t_mlx mlx, t_vec4 dot,
 		int line_size);
@@ -104,4 +104,7 @@ void			mlx_free(t_mlx **mlx);
 int				img_to_win(void *param);
 int				hook_keydwn(int key, void *param);
 int				mouse_hook(int but, int x, int y, void *param);
+void			key_rot(int key, t_trnsfrm *t);
+void			key_persp(int key, t_trnsfrm *t);
+void			key_move(int key, t_trnsfrm *t, t_map *mp);
 #endif
