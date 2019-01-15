@@ -6,20 +6,29 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 20:09:16 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/09 15:11:51 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/15 03:42:57 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "fdf.h"
 
-static int	ft_get_color(char *pt)
+static int	ft_get_color(char *pt, int alt)
 {
 	int		ret;
 	char	t;
 
 	if (!pt)
-		return (0);
+	{
+		if (alt >= 0 && alt < 10)
+			return (0x00FF00);
+		if (alt < 0)
+			return (0x0000FF);
+		if (alt >= 10 && alt < 20)
+			return (0xD2691E);
+		if (alt >= 10 && alt < 20)
+			return (0xFFFFFF);
+	}
 	if (*(++pt) != '0' || *(++pt) != 'x')
 		exit(ft_error(CONT_ERR_CS));
 	ret = 0;
@@ -53,7 +62,7 @@ static int	ft_fill_row(t_map *fdf, char *line, int row)
 		point.z = ft_atoi(tmp[i]);
 		if (point.z > fdf->d)
 			fdf->d = point.z;
-		point.color = ft_get_color(ft_strchr(tmp[i], ','));
+		point.color = ft_get_color(ft_strchr(tmp[i], ','), point.z);
 		fdf->vec = ft_vecpush(fdf->vec, &point, sizeof(t_vec4));
 	}
 	return (i);

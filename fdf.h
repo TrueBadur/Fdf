@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 14:08:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/14 23:18:09 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/15 07:02:43 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,20 @@ typedef struct	s_img
 	int			endian;
 }				t_img;
 
+typedef union		s_color
+{
+	int		col;
+	char	argb[4];
+}					t_color;
+
+typedef struct		s_drawline
+{
+	t_vec2	dxy;
+	t_vec2	sxy;
+	t_vec2	er;
+	t_color	col;
+}					t_drwln;
+
 t_map			*ft_get_map(char *fname);
 int				ft_error(int er);
 void			ft_mapiter(t_map *mp, void (*f)(t_vec4 *, void *), void *data);
@@ -85,13 +99,10 @@ void			img_drawlinesafe(t_vec4 dot0, t_vec4 dot1, t_mlx mlx,
 		t_img cimg);
 t_img			img_draw(t_map map, t_vec2 vec, t_mlx mlx);
 int				border_check(t_vec4 dot0, t_vec4 dot1, t_vec2 map);
-t_map			*ft_rotate_map(t_map *mp, t_vec3 vec);
 void			ft_transform_point(t_vec4 *v, void *data);
-void			ft_point_move(t_vec4 *v, void *data);
-void			ft_point_scale(t_vec4 *v, void *data);
-void			ft_point_rot(t_vec4 *v, void *data);
 void			print_map(t_vec4 *v, void *data);
 void			ft_fit_map(t_map *mp, t_trnsfrm *tr, t_vec2 res);
+void			ft_point_move(t_vec4 *vec4, void *data);
 t_mtrx			*x_rot_mtrx(int x);
 t_mtrx			*y_rot_mtrx(int y);
 t_mtrx			*z_rot_mtrx(int z);
@@ -107,5 +118,4 @@ int				mouse_hook(int but, int x, int y, void *param);
 void			key_rot(int key, t_trnsfrm *t);
 void			key_persp(int key, t_trnsfrm *t);
 void			key_move(int key, t_trnsfrm *t, t_map *mp);
-void			key_scale(int key, t_trnsfrm *t);
 #endif

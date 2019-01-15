@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 13:41:24 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/12 13:45:06 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/15 00:08:06 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct		s_vector3_f
 	float		y;
 	float		z;
 }					t_vec3_f;
+
 typedef struct		s_vector4
 {
 	int	x;
