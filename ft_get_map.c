@@ -6,12 +6,25 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 20:09:16 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/15 03:42:57 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/16 21:39:25 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "fdf.h"
+
+static int	ft_set_color(int alt)
+{
+	if (alt >= 0 && alt < 10)
+		return (0x00FF00);
+	if (alt < 0)
+		return (0x0000FF);
+	if (alt >= 10 && alt < 20)
+		return (0xD2691E);
+	if (alt >= 10 && alt < 20)
+		return (0xFFFFFF);
+	return (0xFFFFFF);
+}
 
 static int	ft_get_color(char *pt, int alt)
 {
@@ -19,16 +32,7 @@ static int	ft_get_color(char *pt, int alt)
 	char	t;
 
 	if (!pt)
-	{
-		if (alt >= 0 && alt < 10)
-			return (0x00FF00);
-		if (alt < 0)
-			return (0x0000FF);
-		if (alt >= 10 && alt < 20)
-			return (0xD2691E);
-		if (alt >= 10 && alt < 20)
-			return (0xFFFFFF);
-	}
+		return (ft_set_color(alt));
 	if (*(++pt) != '0' || *(++pt) != 'x')
 		exit(ft_error(CONT_ERR_CS));
 	ret = 0;
@@ -66,16 +70,6 @@ static int	ft_fill_row(t_map *fdf, char *line, int row)
 		fdf->vec = ft_vecpush(fdf->vec, &point, sizeof(t_vec4));
 	}
 	return (i);
-}
-
-void		ft_center_map(t_map *fdf)
-{
-	t_vec3 v;
-
-	v.x = -(fdf->w / 2);
-	v.y = -(fdf->h / 2);
-	v.z = 0;
-	ft_mapiter(fdf, &ft_point_move, &v);
 }
 
 t_map		*ft_map_init(void)

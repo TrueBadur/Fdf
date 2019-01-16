@@ -6,7 +6,7 @@
 /*   By: bparker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 12:43:55 by bparker           #+#    #+#             */
-/*   Updated: 2019/01/16 21:24:21 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/16 21:34:16 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,13 @@ static void	drwln_init(t_vec4 dot0, t_vec4 dot1, t_drwln *dl)
 	dl->dxy.y = abs(dot1.y - dot0.y);
 	dl->sxy.x = dot0.x < dot1.x ? 1 : -1;
 	dl->sxy.y = dot0.y < dot1.y ? 1 : -1;
-	dl->colc = dl->dxy.x > dl->dxy.y ? dl->dxy.x : dl->dxy.y;	
+	dl->colc = dl->dxy.x > dl->dxy.y ? dl->dxy.x : dl->dxy.y;
 	dl->er.x = (dl->dxy.x > dl->dxy.y ? dl->dxy.x : -dl->dxy.y) / 2;
 	i = 4;
 	while (i--)
 	{
 		dl->dcol[i] = (float)(((unsigned char*)&dot0.color)[i] -
 			(float)((unsigned char *)&dot1.color)[i]) / (float)dl->colc;
-		printf("(%d) - (%d) - (%d)\n", ((unsigned char*)&dot0.color)[i], ((unsigned char *)&dot1.color)[i], dl->colc);
-		printf("%f\n", dl->dcol[i]);
 	}
 }
 
@@ -55,19 +53,14 @@ static void	drwln_change(t_vec4 *dot0, t_vec4 dot1, t_drwln *dl)
 		i = 4;
 		while (i--)
 		{
-			printf("--%f\n",((unsigned char *)&dot1.color)[i] + dl->dcol[i] * dl->colc);
-			printf("[%d] - [%f] - [%d]\n",((unsigned char *)&dot1.color)[i], dl->dcol[i], dl->colc);
 			((unsigned char *)&dot0->color)[i] = (char)
 				(((unsigned char *)&dot1.color)[i] + dl->dcol[i] * dl->colc);
 		}
-		if (dl->colc > 0)
-			dl->colc--;
-		else
-			dl->colc++;
+		(dl->colc > 0) ? dl->colc-- : dl->colc++;
 	}
 }
 
-void	img_drawline(t_vec4 dot0, t_vec4 dot1, t_mlx mlx, t_img cimg)
+void		img_drawline(t_vec4 dot0, t_vec4 dot1, t_mlx mlx, t_img cimg)
 {
 	t_drwln	dl;
 
@@ -81,7 +74,7 @@ void	img_drawline(t_vec4 dot0, t_vec4 dot1, t_mlx mlx, t_img cimg)
 	}
 }
 
-void	img_drawlinesafe(t_vec4 dot0, t_vec4 dot1, t_mlx mlx, t_img cimg)
+void		img_drawlinesafe(t_vec4 dot0, t_vec4 dot1, t_mlx mlx, t_img cimg)
 {
 	t_drwln	dl;
 

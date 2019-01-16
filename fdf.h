@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 14:08:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/15 07:51:11 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/16 21:40:35 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,20 +71,20 @@ typedef struct	s_img
 	int			endian;
 }				t_img;
 
-typedef union		s_color
+typedef union	u_color
 {
 	int		col;
 	char	argb[4];
-}					t_color;
+}				t_color;
 
-typedef struct		s_drawline
+typedef struct	s_drawline
 {
 	t_vec2	dxy;
 	t_vec2	sxy;
 	t_vec2	er;
 	float	dcol[4];
 	int		colc;
-}					t_drwln;
+}				t_drwln;
 
 t_map			*ft_get_map(char *fname);
 int				ft_error(int er);
@@ -103,6 +103,7 @@ int				border_check(t_vec4 dot0, t_vec4 dot1, t_vec2 map);
 void			ft_transform_point(t_vec4 *v, void *data);
 void			print_map(t_vec4 *v, void *data);
 void			ft_fit_map(t_map *mp, t_trnsfrm *tr, t_vec2 res);
+void			ft_center_map(t_map *fdf);
 void			ft_point_move(t_vec4 *vec4, void *data);
 t_mtrx			*x_rot_mtrx(int x);
 t_mtrx			*y_rot_mtrx(int y);
