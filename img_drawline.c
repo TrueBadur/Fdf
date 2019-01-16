@@ -6,7 +6,7 @@
 /*   By: bparker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 12:43:55 by bparker           #+#    #+#             */
-/*   Updated: 2019/01/15 07:17:02 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/16 21:24:21 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,23 @@
 
 static void	drwln_init(t_vec4 dot0, t_vec4 dot1, t_drwln *dl)
 {
+	int i;
+
 	dl->er.y = 0;
 	dl->dxy.x = abs(dot1.x - dot0.x);
 	dl->dxy.y = abs(dot1.y - dot0.y);
 	dl->sxy.x = dot0.x < dot1.x ? 1 : -1;
 	dl->sxy.y = dot0.y < dot1.y ? 1 : -1;
+	dl->colc = dl->dxy.x > dl->dxy.y ? dl->dxy.x : dl->dxy.y;	
 	dl->er.x = (dl->dxy.x > dl->dxy.y ? dl->dxy.x : -dl->dxy.y) / 2;
-	dl->col.argb[0] = 0;
+	i = 4;
+	while (i--)
+	{
+		dl->dcol[i] = (float)(((unsigned char*)&dot0.color)[i] -
+			(float)((unsigned char *)&dot1.color)[i]) / (float)dl->colc;
+		printf("(%d) - (%d) - (%d)\n", ((unsigned char*)&dot0.color)[i], ((unsigned char *)&dot1.color)[i], dl->colc);
+		printf("%f\n", dl->dcol[i]);
+	}
 }
 
 static void	drwln_change(t_vec4 *dot0, t_vec4 dot1, t_drwln *dl)
@@ -38,18 +48,22 @@ static void	drwln_change(t_vec4 *dot0, t_vec4 dot1, t_drwln *dl)
 		dl->er.x += dl->dxy.x;
 	if (dl->er.y < dl->dxy.y)
 		dot0->y += dl->sxy.y;
-	d = abs(dl->dxy.x > dl->dxy.y ? dot0->x - dot1.x : dot0->y - dot1.y);
-	if (!d)
+	if (!dl->colc)
 		return ;
 	if (dot0->color != dot1.color)
 	{
 		i = 4;
 		while (i--)
 		{
-			dl->col.argb[i] = (((t_color)dot0->color).argb[i] -
-					((unsigned char *)&dot1.color)[i]) / d;
-			((unsigned char *)&dot0->color)[i] -= dl->col.argb[i];
+			printf("--%f\n",((unsigned char *)&dot1.color)[i] + dl->dcol[i] * dl->colc);
+			printf("[%d] - [%f] - [%d]\n",((unsigned char *)&dot1.color)[i], dl->dcol[i], dl->colc);
+			((unsigned char *)&dot0->color)[i] = (char)
+				(((unsigned char *)&dot1.color)[i] + dl->dcol[i] * dl->colc);
 		}
+		if (dl->colc > 0)
+			dl->colc--;
+		else
+			dl->colc++;
 	}
 }
 

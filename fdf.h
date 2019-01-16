@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 14:08:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/15 07:02:43 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/15 07:51:11 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ typedef struct		s_drawline
 	t_vec2	dxy;
 	t_vec2	sxy;
 	t_vec2	er;
-	t_color	col;
+	float	dcol[4];
+	int		colc;
 }					t_drwln;
 
 t_map			*ft_get_map(char *fname);
