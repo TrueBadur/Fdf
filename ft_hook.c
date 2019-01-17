@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 19:44:47 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/14 23:18:23 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/17 17:38:49 by bparker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 int		hook_keydwn(int key, void *param)
 {
-	t_map		*c_map;
 	t_trnsfrm	*t;
 	t_map		*mp;
 
@@ -32,6 +31,8 @@ int		hook_keydwn(int key, void *param)
 		key_rot(key, t);
 	if (key == 41 || key == 43 || key == 39 || key == 47)
 		key_scale(key, t);
+	if (key == 82)
+		key_rot_reset(t);
 	if (t->b)
 		img_to_win(param);
 	return (0);
@@ -39,5 +40,7 @@ int		hook_keydwn(int key, void *param)
 
 int		mouse_hook(int but, int x, int y, void *param)
 {
+	if (but && x && y && param)
+		return (0);
 	return (0);
 }
