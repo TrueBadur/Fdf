@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 19:44:47 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/14 23:18:23 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/18 16:59:56 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@ int		hook_keydwn(int key, void *param)
 	t_trnsfrm	*t;
 	t_map		*mp;
 
-	printf("%d\n", key);
-	if (key == 53)
-		exit(0);
 	t = (t_trnsfrm *)(((int **)param)[1]);
 	mp = (t_map *)(((int **)param)[0]);
+	if (key == 53)
+		exit(fdf_finish(&mp, &((t_mlx *)(((int **)param)[2]))));
 	if (key == 35 || key == 30 || key == 33)
 		key_persp(key, t);
 	if (key == 5 || key == 17 || (key >= 123 && key <= 126))
