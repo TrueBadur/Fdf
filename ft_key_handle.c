@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 21:45:28 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/14 23:14:56 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/17 17:12:44 by bparker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,21 @@ void	key_rot(int key, t_trnsfrm *t)
 		t->rot.y -= 5;
 	else if (key == 13)
 		t->rot.y += 5;
+}
+
+void	key_rot_reset(t_trnsfrm *t)
+{
+	t->rot.x = 55;
+	t->rot.y = 0;
+	t->rot.z = 45;
+	t->scale.x = 30.0;
+	t->scale.y = 30.0;
+	t->scale.z = 6.0;
+	t->persp = 0;
+	t->b = 1;
+	t->mov_wrld.x = 0;
+	t->mov_wrld.y = 0;
+	t->mov_wrld.z = 0;
 }
 
 void	key_persp(int key, t_trnsfrm *t)

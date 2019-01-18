@@ -6,7 +6,7 @@
 /*   By: bparker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 12:43:55 by bparker           #+#    #+#             */
-/*   Updated: 2019/01/16 21:34:16 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/17 17:39:11 by bparker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static void	drwln_init(t_vec4 dot0, t_vec4 dot1, t_drwln *dl)
 
 static void	drwln_change(t_vec4 *dot0, t_vec4 dot1, t_drwln *dl)
 {
-	int d;
 	int i;
 
 	dl->er.y = dl->er.x;
