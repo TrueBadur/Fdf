@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 21:45:28 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/17 17:12:44 by bparker          ###   ########.fr       */
+/*   Updated: 2019/01/18 18:16:05 by bparker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,16 @@ void	key_rot(int key, t_trnsfrm *t)
 		t->rot.y += 5;
 }
 
-void	key_rot_reset(t_trnsfrm *t)
+void	key_projection(int key, t_trnsfrm *t)
 {
-	t->rot.x = 55;
-	t->rot.y = 0;
-	t->rot.z = 45;
-	t->scale.x = 30.0;
-	t->scale.y = 30.0;
-	t->scale.z = 6.0;
-	t->persp = 0;
-	t->b = 1;
-	t->mov_wrld.x = 0;
-	t->mov_wrld.y = 0;
-	t->mov_wrld.z = 0;
+	if (key == 18)
+		key_parralel(t);
+	if (key == 19)
+		key_isometric(t);
+	if (key == 20)
+		key_isometric_1(t);
+	if (key == 21)
+		key_isometric_2(t);
 }
 
 void	key_persp(int key, t_trnsfrm *t)

@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 19:44:47 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/18 17:51:02 by bparker          ###   ########.fr       */
+/*   Updated: 2019/01/18 18:13:44 by bparker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,8 @@ int		hook_keydwn(int key, void *param)
 		key_rot(key, t);
 	if (key == 41 || key == 43 || key == 39 || key == 47)
 		key_scale(key, t);
-	if (key == 19)
-		key_isometric(t);
-	if (key == 18)
-		key_parralel(t);
+	if (key >= 18 && key <= 21)
+		key_projection(key, t);
 	if (t->b)
 		img_to_win(param);
 	return (0);

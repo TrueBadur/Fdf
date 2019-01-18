@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 14:08:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/18 17:50:20 by bparker          ###   ########.fr       */
+/*   Updated: 2019/01/18 18:15:39 by bparker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,10 @@ void			key_rot(int key, t_trnsfrm *t);
 void			key_persp(int key, t_trnsfrm *t);
 void			key_move(int key, t_trnsfrm *t, t_map *mp);
 int				fdf_finish(t_map **mp, t_mlx **mlx);
+void			key_projection(int key, t_trnsfrm *t);
 void			key_isometric(t_trnsfrm *t);
 void			key_scale(int key, t_trnsfrm *t);
 void			key_parralel(t_trnsfrm *t);
+void			key_isometric_1(t_trnsfrm *t);
+void			key_isometric_2(t_trnsfrm *t);
 #endif
