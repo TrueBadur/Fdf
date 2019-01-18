@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 01:14:04 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/14 20:20:01 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/18 17:18:13 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ t_mtrx	*ft_scale_mtrx(t_vec3_f v)
 	((double *)ret->mtrx)[5] = (double)v.y;
 	((double *)ret->mtrx)[10] = (double)v.z;
 	((double *)ret->mtrx)[15] = 1;
-	ft_mtrx_print(ret);
 	return (ret);
 }
 
@@ -36,7 +35,6 @@ t_mtrx	*ft_rotate_mtrx(t_vec3 v)
 		return (NULL);
 	if (!(ret = ft_mtrx_mlt_destr(ret, z_rot_mtrx(v.z))))
 		return (NULL);
-	ft_mtrx_print(ret);
 	return (ret);
 }
 
@@ -53,7 +51,6 @@ t_mtrx	*ft_move_mtrx(t_vec3 v)
 	((double *)ret->mtrx)[10] = 1;
 	((double *)ret->mtrx)[11] = v.z;
 	((double *)ret->mtrx)[15] = 1;
-	ft_mtrx_print(ret);
 	return (ret);
 }
 
@@ -70,6 +67,5 @@ t_mtrx	*ft_persp_mtrx(int z)
 	((double *)ret->mtrx)[13] = 0;
 	((double *)ret->mtrx)[14] = -.0001 * z;
 	((double *)ret->mtrx)[15] = 1;
-	ft_mtrx_print(ret);
 	return (ret);
 }
