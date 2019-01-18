@@ -6,11 +6,12 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 02:57:48 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/18 17:07:12 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/01/18 17:14:54 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdio.h>
 
 void	map_free(t_map **mp)
 {
@@ -22,7 +23,6 @@ void	map_free(t_map **mp)
 void	mlx_free(t_mlx **mlx)
 {
 	mlx_destroy_window((*mlx)->mlx_ptr, (*mlx)->win_ptr);
-	free(*mlx);
 	*mlx = NULL;
 }
 
